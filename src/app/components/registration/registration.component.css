@@ -1,0 +1,102 @@
+.registration-section {
+    background-color: #34ebb4;
+    height: 100%;
+    padding: 50px;
+    overflow: hidden;
+}
+
+.form-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.ship-background {
+    position: fixed;
+    width: 50%;
+    z-index: 1;
+    bottom: -10%;
+    left: -10%;
+}
+
+/* __________ Form card __________ */
+
+.form-card {
+    background-color: #373945;
+    padding: 50px;
+    box-shadow: 0 0 30px 5px rgba(0, 0, 0, .5);
+    z-index: 2;
+    width: 800px;
+    max-width: 800px;
+}
+
+.form-card h2 {
+    margin-bottom: 50px;
+    font-size: 2rem;
+    color: #fff;
+}
+
+/* __________ Form inputs __________ */
+
+.form-box {
+    width: 100%;
+}
+
+.form-box label {
+    display: block;
+    color: #fff;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.form-box
+input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.5rem;
+    outline: none;
+}
+
+
+:host ::ng-deep .iti {
+    background-color: #7EA6CD;
+    padding-left: 3rem;
+    width: 100%;
+}
+
+.input-error-message {
+    font-size: 1.3rem;
+    color: #fff;
+    margin-top: 1rem;
+}
+
+.input-invalid {
+    border: 2px solid #ff0000;
+}
+
+/* __________ Submit button __________ */
+
+.registration-form
+.btn-submit {
+    cursor: pointer;
+    color: #fff;
+    border: none;
+    font-size: 2rem;
+    padding: 15px 25px;
+    background-color: #FFD300;
+}
+
+.registration-form
+.btn-submit:hover {
+    transform: scale(.98);
+    background-color: #FF641A;
+}
