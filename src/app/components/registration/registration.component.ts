@@ -28,7 +28,7 @@ export class RegistrationComponent implements OnInit {
       email: ['', [Validators.required, Validators.email, Validators.minLength(6)]],
       password: ['', [Validators.required, Validators.minLength(5)]],
       confirmPassword: ['', Validators.required],
-      postalAddress: ['', Validators.required],
+      address: ['', Validators.required],
       country: ['', Validators.required],
       phoneNumber: ['', Validators.required],
     },
@@ -52,7 +52,7 @@ export class RegistrationComponent implements OnInit {
     this.registrationService.registerUser(this.registerForm.value).subscribe((data: any) => {
       console.log(data);
     });
-    
+
     alert('You have signed up successfully!')
   }
 }

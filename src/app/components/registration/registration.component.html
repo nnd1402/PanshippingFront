@@ -60,10 +60,10 @@
                 </div>
 
                 <div class="form-box">
-                    <label for="postalAddress">Postal Address</label>
-                    <input formControlName="postalAddress" placeholder="Postal Address" [ngClass]="{ 'input-invalid': submitted && f.postalAddress.errors }">
-                    <div *ngIf="submitted && f.postalAddress.errors">
-                        <div *ngIf="f.postalAddress.errors.required" class="input-error-message">Postal Address is required</div>
+                    <label for="address">Postal Address</label>
+                    <input formControlName="address" placeholder="Postal Address" [ngClass]="{ 'input-invalid': submitted && f.address.errors }">
+                    <div *ngIf="submitted && f.address.errors">
+                        <div *ngIf="f.address.errors.required" class="input-error-message">Postal Address is required</div>
                     </div>
                 </div>
 

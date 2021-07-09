@@ -7,7 +7,7 @@ export interface IUser {
     email: string,
     password: string,
     confirmPassword: string,
-    postalAddress: string,
+    address: string,
     country: string,
     phoneNumber: string,
 }
