@@ -77,10 +77,8 @@
 
                 <div class="form-box">
                     <label for="phoneNumber">Phone Number</label>
-                    <input formControlName="phoneNumber" 
-                    ng2TelInput [ng2TelInputOptions]="{initialCountry: 'rs'}"
-                    [ngClass]="{ 'input-invalid': submitted && f.phoneNumber.errors }"
-                    class="input-phone">
+                    <input formControlName="phoneNumber" placeholder="Phone Number"
+                    [ngClass]="{ 'input-invalid': submitted && f.phoneNumber.errors }">
                     <div *ngIf="submitted && f.phoneNumber.errors">
                         <div *ngIf="f.phoneNumber.errors.required" class="input-error-message">Phone Number is required</div>
                         <div *ngIf="f.phoneNumber.errors.pattern" class="input-error-message">Phone Number must contain only numbers</div>

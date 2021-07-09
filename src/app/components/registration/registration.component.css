@@ -91,13 +91,6 @@ input {
     outline: none;
 }
 
-
-:host ::ng-deep .iti {
-    background-color: #7EA6CD;
-    padding-left: 3rem;
-    width: 100%;
-}
-
 .input-error-message {
     font-size: 1.3rem;
     color: #fff;

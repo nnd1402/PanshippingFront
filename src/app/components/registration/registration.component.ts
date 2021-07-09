@@ -47,11 +47,12 @@ export class RegistrationComponent implements OnInit {
 
     if(this.registerForm.invalid) {
       return;
-    }    
-    console.log(this.registerForm.value);
+    }
+
     this.registrationService.registerUser(this.registerForm.value).subscribe((data: any) => {
       console.log(data);
     });
+    
     alert('You have signed up successfully!')
   }
 }

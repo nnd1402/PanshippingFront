@@ -8,8 +8,6 @@ import { IUser } from '../interfaces/user';
 })
 export class RegistrationService {
 
-  endpoint: string = "http://localhost:3000/";
-
   constructor(private httpClient: HttpClient) { }
 
   httpHeader = {
@@ -19,6 +17,7 @@ export class RegistrationService {
   }
 
   registerUser(user: IUser): Observable<any> {
-    return this.httpClient.post<IUser>(this.endpoint + '/users', JSON.stringify(user), this.httpHeader);
+    console.log(user)
+    return this.httpClient.post<IUser>('/api/user/addUser', JSON.stringify(user), this.httpHeader);
   }
 }
