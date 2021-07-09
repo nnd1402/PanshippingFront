@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Ng2TelInputModule } from 'ng2-tel-input';
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './components/registration/registration.component';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,8 @@ import { RegistrationComponent } from './components/registration/registration.co
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    Ng2TelInputModule
+    Ng2TelInputModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

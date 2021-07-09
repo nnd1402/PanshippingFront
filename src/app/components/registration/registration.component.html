@@ -1,5 +1,8 @@
 <section class="registration-section">
-    <img src="../../../assets/images/registration-page/ship.png" class="ship-background">
+    <div class="login-box">
+        <a routerLink="/login">Login</a>
+    </div>
+    <img src="../../../assets/images/shared/ship.png" class="ship-background">
     <div class="form-container">
         <div class="form-card">
             <h2>Registration Form</h2>
@@ -37,27 +40,6 @@
                         <div *ngIf="f.email.errors.minlength" class="input-error-message">Email must have at least 6 characters</div>
                     </div>
                 </div>
-
-                <div class="form-box">
-                    <label for="address">Address</label>
-                    <input formControlName="address" placeholder="Address" [ngClass]="{ 'input-invalid': submitted && f.address.errors }">
-                    <div *ngIf="submitted && f.address.errors">
-                        <div *ngIf="f.address.errors.required" class="input-error-message">Address is required</div>
-                        <div *ngIf="f.address.errors.minlength" class="input-error-message">Address must have at least 2 characters</div>
-                    </div>
-                </div>
-
-                <div class="form-box">
-                    <label for="phoneNumber">Phone Number</label>
-                    <input formControlName="phoneNumber" placeholder="Phone Number" 
-                    [ngClass]="{ 'input-invalid': submitted && f.phoneNumber.errors }" 
-                    ng2TelInput [ng2TelInputOptions]="{initialCountry: 'rs'}"
-                    class="input-phone">
-                    <div *ngIf="submitted && f.phoneNumber.errors">
-                        <div *ngIf="f.phoneNumber.errors.required" class="input-error-message">Phone Number is required</div>
-                        <div *ngIf="f.phoneNumber.errors.pattern" class="input-error-message">Phone Number must contain only numbers</div>
-                    </div>
-                </div>
                 
                 <div class="form-box">
                     <label for="password">Password</label>
@@ -74,6 +56,34 @@
                     <div *ngIf="submitted && f.confirmPassword.errors">
                         <div *ngIf="f.confirmPassword.errors.required" class="input-error-message">Confirm Password is required</div>
                         <div *ngIf="f.confirmPassword.errors.matching" class="input-error-message">Confirm Password does not match</div>
+                    </div>
+                </div>
+
+                <div class="form-box">
+                    <label for="postalAddress">Postal Address</label>
+                    <input formControlName="postalAddress" placeholder="Postal Address" [ngClass]="{ 'input-invalid': submitted && f.postalAddress.errors }">
+                    <div *ngIf="submitted && f.postalAddress.errors">
+                        <div *ngIf="f.postalAddress.errors.required" class="input-error-message">Postal Address is required</div>
+                    </div>
+                </div>
+
+                <div class="form-box">
+                    <label for="country">Country</label>
+                    <input formControlName="country" placeholder="Country" [ngClass]="{ 'input-invalid': submitted && f.country.errors }">
+                    <div *ngIf="submitted && f.country.errors">
+                        <div *ngIf="f.country.errors.required" class="input-error-message">Country is required</div>
+                    </div>
+                </div>
+
+                <div class="form-box">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input formControlName="phoneNumber" 
+                    ng2TelInput [ng2TelInputOptions]="{initialCountry: 'rs'}"
+                    [ngClass]="{ 'input-invalid': submitted && f.phoneNumber.errors }"
+                    class="input-phone">
+                    <div *ngIf="submitted && f.phoneNumber.errors">
+                        <div *ngIf="f.phoneNumber.errors.required" class="input-error-message">Phone Number is required</div>
+                        <div *ngIf="f.phoneNumber.errors.pattern" class="input-error-message">Phone Number must contain only numbers</div>
                     </div>
                 </div>
     
