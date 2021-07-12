@@ -3,6 +3,7 @@
     height: 100%;
     padding: 50px;
     overflow: hidden;
+    position: relative;
 }
 
 .form-container {
@@ -11,6 +12,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 3rem;
 }
 
 .registration-form {
@@ -26,6 +28,29 @@
     z-index: 1;
     bottom: -10%;
     left: -10%;
+}
+
+.login-box {
+    width: 200px;
+    height: 200px;
+    background-color: #FFD300;
+    position: absolute;
+    right: -100px;
+    top: -100px;
+    border-radius: 50%;
+}
+
+.login-box a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5rem;
+    position: absolute;
+    bottom: 50px;
+    left: 30px;
+}
+
+.login-box a:hover {
+    color: #EF3800;
 }
 
 /* __________ Form card __________ */
@@ -64,13 +89,6 @@ input {
     padding: 10px;
     font-size: 1.5rem;
     outline: none;
-}
-
-
-:host ::ng-deep .iti {
-    background-color: #7EA6CD;
-    padding-left: 3rem;
-    width: 100%;
 }
 
 .input-error-message {
