@@ -17,7 +17,6 @@ export class RegistrationService {
   }
 
   registerUser(user: IUser): Observable<any> {
-    console.log(user)
     return this.httpClient.post<IUser>('/api/user/addUser', JSON.stringify(user), this.httpHeader);
   }
 }
