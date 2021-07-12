@@ -30,7 +30,7 @@ export class RegistrationComponent implements OnInit {
       confirmPassword: ['', Validators.required],
       address: ['', Validators.required],
       country: ['', Validators.required],
-      phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      phone: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
     },
     {
       validators: [Validation.match('password', 'confirmPassword')]

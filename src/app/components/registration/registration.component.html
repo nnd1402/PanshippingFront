@@ -76,12 +76,12 @@
                 </div>
 
                 <div class="form-box">
-                    <label for="phoneNumber">Phone Number</label>
-                    <input formControlName="phoneNumber" placeholder="Phone Number"
-                    [ngClass]="{ 'input-invalid': submitted && f.phoneNumber.errors }">
-                    <div *ngIf="submitted && f.phoneNumber.errors">
-                        <div *ngIf="f.phoneNumber.errors.required" class="input-error-message">Phone Number is required</div>
-                        <div *ngIf="f.phoneNumber.errors.pattern" class="input-error-message">Phone Number must contain only numbers</div>
+                    <label for="phone">Phone Number</label>
+                    <input formControlName="phone" placeholder="Phone Number"
+                    [ngClass]="{ 'input-invalid': submitted && f.phone.errors }">
+                    <div *ngIf="submitted && f.phone.errors">
+                        <div *ngIf="f.phone.errors.required" class="input-error-message">Phone Number is required</div>
+                        <div *ngIf="f.phone.errors.pattern" class="input-error-message">Phone Number must contain only numbers</div>
                     </div>
                 </div>
     

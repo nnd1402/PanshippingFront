@@ -9,5 +9,5 @@ export interface IUser {
     confirmPassword: string,
     address: string,
     country: string,
-    phoneNumber: string,
+    phone: string,
 }
