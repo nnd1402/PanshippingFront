@@ -1,0 +1,31 @@
+<section class="login-section">
+    <mat-card (click)="cardClicked()">
+        <mat-card-title>Login</mat-card-title>
+        <mat-card-content>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div>
+                    <mat-form-field appearance="standard">
+                        <mat-label>Username</mat-label>
+                        <input formControlName="username" matInput placeholder="Username">                    
+                    </mat-form-field>
+                    <div *ngIf="submitted && f.username.errors">
+                        <div *ngIf="f.username.errors.required" class="input-error-message">Username is required</div>
+                    </div>
+                </div>
+                <div>
+                    <mat-form-field appearance="standard">
+                        <mat-label>Password</mat-label>
+                        <input formControlName="password" type="password" matInput placeholder="Password">
+                    </mat-form-field>
+                    <div *ngIf="submitted && f.password.errors">
+                        <div *ngIf="f.password.errors.required" class="input-error-message">Password is required</div>
+                        <div *ngIf="f.password.errors.minlength" class="input-error-message">Password must have at least 5 characters</div>
+                    </div>
+                </div>
+                <div *ngIf="hasError" class="input-error-message">Invalid Username or Password</div>
+                <button type="submit" mat-raised-button color="primary">Login</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</section>
+
