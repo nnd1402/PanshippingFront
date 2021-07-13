@@ -1,0 +1,19 @@
+<div>
+    <mat-toolbar color="primary">
+        <span>PanShipping</span>        
+        <div class="link-container">
+          <a routerLink="" mat-button>
+            User
+          </a>
+          <a routerLink="" mat-button>          
+            Product
+          </a>
+          <a *ngIf="!loginService.isLoggedIn" routerLink="/login" mat-raised-button color="warn">          
+            Login
+          </a>
+          <a *ngIf="loginService.isLoggedIn" mat-raised-button color="warn" (click)="signOutClicked()">          
+            Sign out
+          </a>
+        </div>
+    </mat-toolbar>
+</div>

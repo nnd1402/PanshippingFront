@@ -1,0 +1,25 @@
+mat-toolbar {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+mat-icon {
+    color: #fff;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.link-container {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.link-box a {
+    display: flex;
+    align-items: center;
+}

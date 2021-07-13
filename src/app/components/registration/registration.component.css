@@ -1,6 +1,5 @@
 .registration-section {
     background-color: #34ebb4;
-    height: 100%;
     padding: 50px;
     overflow: hidden;
     position: relative;
@@ -28,29 +27,6 @@
     z-index: 1;
     bottom: -10%;
     left: -10%;
-}
-
-.login-box {
-    width: 200px;
-    height: 200px;
-    background-color: #FFD300;
-    position: absolute;
-    right: -100px;
-    top: -100px;
-    border-radius: 50%;
-}
-
-.login-box a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.5rem;
-    position: absolute;
-    bottom: 50px;
-    left: 30px;
-}
-
-.login-box a:hover {
-    color: #EF3800;
 }
 
 /* __________ Form card __________ */
