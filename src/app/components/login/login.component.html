@@ -8,8 +8,8 @@
                         <mat-label>Username</mat-label>
                         <input formControlName="username" matInput placeholder="Username">                    
                     </mat-form-field>
-                    <div *ngIf="submitted && f.username.errors">
-                        <div *ngIf="f.username.errors.required" class="input-error-message">Username is required</div>
+                    <div *ngIf="submitted && getLoginFormControl.username.errors">
+                        <div *ngIf="getLoginFormControl.username.errors.required" class="input-error-message">Username is required</div>
                     </div>
                 </div>
                 <div>
@@ -17,9 +17,9 @@
                         <mat-label>Password</mat-label>
                         <input formControlName="password" type="password" matInput placeholder="Password">
                     </mat-form-field>
-                    <div *ngIf="submitted && f.password.errors">
-                        <div *ngIf="f.password.errors.required" class="input-error-message">Password is required</div>
-                        <div *ngIf="f.password.errors.minlength" class="input-error-message">Password must have at least 5 characters</div>
+                    <div *ngIf="submitted && getLoginFormControl.password.errors">
+                        <div *ngIf="getLoginFormControl.password.errors.required" class="input-error-message">Password is required</div>
+                        <div *ngIf="getLoginFormControl.password.errors.minlength" class="input-error-message">Password must have at least 5 characters</div>
                     </div>
                 </div>
                 <div *ngIf="hasError" class="input-error-message">Invalid Username or Password</div>

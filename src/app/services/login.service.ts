@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { IUserLogin } from '../interfaces/user-login';
+import { tokenKey } from '../utility/constants';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ export class LoginService {
   
   currentUser = {};
   errorThrown: boolean = false;
+  token_key: string = tokenKey;
 
   constructor(
     private httpClient: HttpClient,
@@ -27,16 +29,16 @@ export class LoginService {
   }
 
   getToken(): any {
-    return localStorage.getItem('access_token');
+    return localStorage.getItem(this.token_key);
   }
 
   get isLoggedIn(): boolean {
-    let authToken = localStorage.getItem('access_token');
+    let authToken = localStorage.getItem(this.token_key);
     return (authToken !== null) ? true : false;
   }
 
   logout(): void {
-    let removeToken = localStorage.removeItem('access_token');
+    let removeToken = localStorage.removeItem(this.token_key);
     if(removeToken === null) {
       this.router.navigate(['']);
     }

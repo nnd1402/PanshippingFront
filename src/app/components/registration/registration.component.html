@@ -9,79 +9,79 @@
             <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="registration-form">
                 <div class="form-box">
                     <label for="firstName">First Name</label>                    
-                    <input formControlName="firstName" placeholder="First Name" [ngClass]="{ 'input-invalid': submitted && f.firstName.errors }">
-                    <div *ngIf="submitted && f.lastName.errors">
-                        <div *ngIf="f.firstName.errors" class="input-error-message">First Name is required</div>
+                    <input formControlName="firstName" placeholder="First Name" [ngClass]="{ 'input-invalid': submitted && getRegistrationFormControl.firstName.errors }">
+                    <div *ngIf="submitted && getRegistrationFormControl.firstName.errors">
+                        <div *ngIf="getRegistrationFormControl.firstName.errors" class="input-error-message">First Name is required</div>
                     </div>                    
                 </div>
 
                 <div class="form-box">
                     <label for="lastName">Last Name</label>
-                    <input formControlName="lastName" placeholder="Last Name" [ngClass]="{ 'input-invalid': submitted && f.lastName.errors }">
-                    <div *ngIf="submitted && f.lastName.errors">
-                        <div *ngIf="f.lastName.errors.required" class="input-error-message">Last Name is required</div>
+                    <input formControlName="lastName" placeholder="Last Name" [ngClass]="{ 'input-invalid': submitted && getRegistrationFormControl.lastName.errors }">
+                    <div *ngIf="submitted && getRegistrationFormControl.lastName.errors">
+                        <div *ngIf="getRegistrationFormControl.lastName.errors.required" class="input-error-message">Last Name is required</div>
                     </div>
                 </div>
                 
                 <div class="form-box">
                     <label for="username">Username</label>
-                    <input formControlName="username" placeholder="Username" [ngClass]="{ 'input-invalid': submitted && f.lastName.errors }">
-                    <div *ngIf="submitted && f.username.errors">
-                        <div *ngIf="f.username.errors.required" class="input-error-message">Username is required</div>
+                    <input formControlName="username" placeholder="Username" [ngClass]="{ 'input-invalid': submitted && getRegistrationFormControl.lastName.errors }">
+                    <div *ngIf="submitted && getRegistrationFormControl.username.errors">
+                        <div *ngIf="getRegistrationFormControl.username.errors.required" class="input-error-message">Username is required</div>
                     </div>
                 </div>
     
                 <div class="form-box">
                     <label for="email">Email</label>
-                    <input formControlName="email" placeholder="Email" [ngClass]="{ 'input-invalid': submitted && f.email.errors }">
-                    <div *ngIf="submitted && f.email.errors">
-                        <div *ngIf="f.email.errors.required" class="input-error-message">Email is required</div>
-                        <div *ngIf="f.email.errors.email" class="input-error-message">Email is not in valid format</div>
-                        <div *ngIf="f.email.errors.minlength" class="input-error-message">Email must have at least 6 characters</div>
+                    <input formControlName="email" placeholder="Email" [ngClass]="{ 'input-invalid': submitted && getRegistrationFormControl.email.errors }">
+                    <div *ngIf="submitted && getRegistrationFormControl.email.errors">
+                        <div *ngIf="getRegistrationFormControl.email.errors.required" class="input-error-message">Email is required</div>
+                        <div *ngIf="getRegistrationFormControl.email.errors.email" class="input-error-message">Email is not in valid format</div>
+                        <div *ngIf="getRegistrationFormControl.email.errors.minlength" class="input-error-message">Email must have at least 6 characters</div>
                     </div>
                 </div>
                 
                 <div class="form-box">
                     <label for="password">Password</label>
-                    <input type="password" formControlName="password" placeholder="Password" [ngClass]="{ 'input-invalid': submitted && f.password.errors }">
-                    <div *ngIf="submitted && f.password.errors">
-                        <div *ngIf="f.password.errors.required" class="input-error-message">Password is required</div>
-                        <div *ngIf="f.password.errors.minlength" class="input-error-message">Password must have at least 5 characters</div>
+                    <input type="password" formControlName="password" placeholder="Password" [ngClass]="{ 'input-invalid': submitted && getRegistrationFormControl.password.errors }">
+                    <div *ngIf="submitted && getRegistrationFormControl.password.errors"getRegistrationFormControl>
+                        <div *ngIf="getRegistrationFormControl.password.errors.required" class="input-error-message">Password is required</div>
+                        <div *ngIf="getRegistrationFormControl.password.errors.minlength" class="input-error-message">Password must have at least 5 characters</div>
                     </div>
                 </div>
     
                 <div class="form-box">
                     <label for="confirmPassword">Confirm Password</label>
-                    <input type="password" formControlName="confirmPassword" placeholder="Confirm Password" [ngClass]="{ 'input-invalid': submitted && f.password.errors }">
-                    <div *ngIf="submitted && f.confirmPassword.errors">
-                        <div *ngIf="f.confirmPassword.errors.required" class="input-error-message">Confirm Password is required</div>
-                        <div *ngIf="f.confirmPassword.errors.matching" class="input-error-message">Confirm Password does not match</div>
+                    <input type="password" formControlName="confirmPassword" placeholder="Confirm Password" [ngClass]="{ 'input-invalid': submitted && getRegistrationFormControl.password.errors }">
+                    <div *ngIf="submitted && getRegistrationFormControl.confirmPassword.errors">
+                        <div *ngIf="getRegistrationFormControl.confirmPassword.errors.required" class="input-error-message">Confirm Password is required</div>
+                        <div *ngIf="getRegistrationFormControl.confirmPassword.errors.matching" class="input-error-message">Confirm Password does not match</div>
                     </div>
                 </div>
 
                 <div class="form-box">
                     <label for="address">Postal Address</label>
-                    <input formControlName="address" placeholder="Postal Address" [ngClass]="{ 'input-invalid': submitted && f.address.errors }">
-                    <div *ngIf="submitted && f.address.errors">
-                        <div *ngIf="f.address.errors.required" class="input-error-message">Postal Address is required</div>
+                    <input formControlName="address" placeholder="Postal Address" [ngClass]="{ 'input-invalid': submitted && getRegistrationFormControl.address.errors }">
+                    <div *ngIf="submitted && getRegistrationFormControl.address.errors">
+                        <div *ngIf="getRegistrationFormControl.address.errors.required" class="input-error-message">Postal Address is required</div>
                     </div>
                 </div>
 
                 <div class="form-box">
                     <label for="country">Country</label>
-                    <input formControlName="country" placeholder="Country" [ngClass]="{ 'input-invalid': submitted && f.country.errors }">
-                    <div *ngIf="submitted && f.country.errors">
-                        <div *ngIf="f.country.errors.required" class="input-error-message">Country is required</div>
+                    <input formControlName="country" placeholder="Country" [ngClass]="{ 'input-invalid': submitted && getRegistrationFormControl.country.errors }">
+                    <div *ngIf="submitted && getRegistrationFormControl.country.errors">
+                        <div *ngIf="getRegistrationFormControl.country.errors.required" class="input-error-message">Country is required</div>
                     </div>
                 </div>
 
                 <div class="form-box">
                     <label for="phone">Phone Number</label>
                     <input formControlName="phone" placeholder="Phone Number"
-                    [ngClass]="{ 'input-invalid': submitted && f.phone.errors }">
-                    <div *ngIf="submitted && f.phone.errors">
-                        <div *ngIf="f.phone.errors.required" class="input-error-message">Phone Number is required</div>
-                        <div *ngIf="f.phone.errors.pattern" class="input-error-message">Phone Number must contain only numbers</div>
+                    [ngClass]="{ 'input-invalid': submitted && getRegistrationFormControl.phone.errors }">
+                    <div *ngIf="submitted && getRegistrationFormControl.phone.errors">
+                        <div *ngIf="getRegistrationFormControl.phone.errors.required" class="input-error-message">Phone Number is required</div>
+                        <div *ngIf="getRegistrationFormControl.phone.errors.pattern" class="input-error-message">Phone Number must contain only numbers</div>
                     </div>
                 </div>
     
