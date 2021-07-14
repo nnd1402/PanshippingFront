@@ -3,6 +3,7 @@ import { LoginService } from 'src/app/services/login.service';
 import { AbstractControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IUser } from 'src/app/interfaces/user';
 import { Router } from '@angular/router';
+import { tokenKey } from 'src/app/utility/constants';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
   submitted: boolean = false;
   hasError: boolean = false;
   currentUser?: IUser;
+  token_key: string = tokenKey;
 
   constructor(
     private loginService: LoginService,
@@ -28,8 +30,8 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(5)]]
     })
   }
-
-  get f(): { [key: string]: AbstractControl } {
+  // vraca kontrolu od login forme
+  get form(): { [key: string]: AbstractControl } {
     return this.loginForm.controls;
   }
 
@@ -42,7 +44,7 @@ export class LoginComponent implements OnInit {
 
     this.loginService.login(this.loginForm.value).subscribe(
       (data: any) => {
-        localStorage.setItem('access_token', data);
+        localStorage.setItem(this.token_key, JSON.stringify(data));
         this.currentUser = data;
         this.router.navigate(['']);
       },

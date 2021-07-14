@@ -38,7 +38,7 @@ export class RegistrationComponent implements OnInit {
     );
   }  
 
-  get f(): { [key: string]: AbstractControl } {
+  get form(): { [key: string]: AbstractControl } {
     return this.registerForm.controls;
   }
 
