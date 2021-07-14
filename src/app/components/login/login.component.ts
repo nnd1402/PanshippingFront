@@ -30,8 +30,8 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(5)]]
     })
   }
-
-  get getLoginFormControl(): { [key: string]: AbstractControl } {
+  // vraca kontrolu od login forme
+  get form(): { [key: string]: AbstractControl } {
     return this.loginForm.controls;
   }
 
