@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
   submitted: boolean = false;
+  // odredjuje u direktivi da li ce se pokazati poruka za Invalid Username or Password
   hasError: boolean = false;
   currentUser?: IUser;
   token_key: string = tokenKey;
@@ -30,6 +31,7 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(5)]]
     })
   }
+  
   // vraca kontrolu od login forme
   get form(): { [key: string]: AbstractControl } {
     return this.loginForm.controls;
@@ -53,6 +55,7 @@ export class LoginComponent implements OnInit {
       });;
   }
 
+  // ako je korisnik kliknuo na login formu ukloni poruku za Invalid Username or Password
   cardClicked() {
     this.hasError = false;
   }
