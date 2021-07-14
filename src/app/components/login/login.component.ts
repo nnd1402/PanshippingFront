@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
 
     this.loginService.login(this.loginForm.value).subscribe(
       (data: any) => {
-        localStorage.setItem('access_token', data);
+        localStorage.setItem('access_token', JSON.stringify(data));
         this.currentUser = data;
         this.router.navigate(['']);
       },
