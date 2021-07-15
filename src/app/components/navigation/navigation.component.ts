@@ -18,4 +18,5 @@ export class NavigationComponent implements OnInit {
   signOutClicked(): void {
     this.loginService.logout();
   }
+  
 }
