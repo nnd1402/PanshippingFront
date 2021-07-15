@@ -24,3 +24,25 @@ button {
     color: #f00;
     margin-top: .5rem;
 }
+
+.register-field {    
+    font-size: 1rem;
+}
+
+a {
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.ship-img {
+    position: fixed;
+    width: 50%;
+    left: 0;
+    bottom: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .ship-img {
+        display: none;
+    }
+}

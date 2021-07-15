@@ -1,4 +1,5 @@
 <section class="login-section">
+    <img src="../../../assets/images/shared/ship.svg" alt="" class="ship-img">
     <mat-card (click)="cardClicked()">
         <mat-card-title>Login</mat-card-title>
         <mat-card-content>
@@ -23,6 +24,7 @@
                     </div>
                 </div>
                 <div *ngIf="hasError" class="input-error-message">Invalid Username or Password</div>
+                <div class="register-field">New user? <a routerLink="/registration">Register</a></div>
                 <button type="submit" mat-raised-button color="primary">Login</button>
             </form>
         </mat-card-content>

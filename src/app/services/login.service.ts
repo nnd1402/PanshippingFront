@@ -8,9 +8,7 @@ import { tokenKey } from '../utility/constants';
   providedIn: 'root'
 })
 export class LoginService {
-  
-  currentUser = {};
-  errorThrown: boolean = false;
+
   token_key: string = tokenKey;
 
   constructor(
@@ -42,5 +40,6 @@ export class LoginService {
     if(removeToken === null) {
       this.router.navigate(['']);
     }
+    this.router.navigate(['/login']);
   }
 }
