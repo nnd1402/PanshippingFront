@@ -53,9 +53,4 @@ export class LoginComponent implements OnInit {
         this.hasError = true;
       });;
   }
-
-  // ako je korisnik kliknuo na login formu ukloni poruku za Invalid Username or Password
-  cardClicked() {
-    this.hasError = false;
-  }
 }

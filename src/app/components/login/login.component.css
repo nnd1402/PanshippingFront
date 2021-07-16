@@ -22,11 +22,11 @@ button {
 
 .input-error-message {
     color: #f00;
-    margin-top: .5rem;
 }
 
 .register-field {    
     font-size: 1rem;
+    padding-top: .5rem;
 }
 
 a {
