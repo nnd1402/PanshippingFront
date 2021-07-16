@@ -3,7 +3,7 @@ import { LoginService } from 'src/app/services/login.service';
 import { AbstractControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IUser } from 'src/app/interfaces/user';
 import { Router } from '@angular/router';
-import { tokenKey } from 'src/app/utility/constants';
+import { TOKEN_KEY, EMPTY_STRING } from 'src/app/utility/constants';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +17,6 @@ export class LoginComponent implements OnInit {
   // odredjuje u direktivi da li ce se pokazati poruka za Invalid Username or Password
   hasError: boolean = false;
   currentUser?: IUser;
-  token_key: string = tokenKey;
 
   constructor(
     private loginService: LoginService,
@@ -27,8 +26,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(5)]]
+      username: [EMPTY_STRING, Validators.required],
+      password: [EMPTY_STRING, [Validators.required, Validators.minLength(5)]]
     })
   }
   
@@ -46,9 +45,9 @@ export class LoginComponent implements OnInit {
 
     this.loginService.login(this.loginForm.value).subscribe(
       (data: any) => {
-        localStorage.setItem(this.token_key, JSON.stringify(data));
+        localStorage.setItem(TOKEN_KEY, JSON.stringify(data));
         this.currentUser = data;
-        this.router.navigate(['']);
+        this.router.navigate([EMPTY_STRING]);
       },
       (error) => {
         this.hasError = true;
