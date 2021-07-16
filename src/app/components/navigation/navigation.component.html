@@ -1,19 +1,47 @@
-<div>
-    <mat-toolbar color="primary">
-        <span>PanShipping</span>        
-        <div class="link-container">
-          <a routerLink="" mat-button>
+<nav>
+  <mat-toolbar color="primary">
+      <a routerLink="">
+        <span><mat-icon>directions_boat</mat-icon><span class="brand-name">Pan</span>Shipping</span> 
+      </a>       
+      <div class="link-container">
+        <a routerLink="" mat-button>
+          User
+        </a>
+        <a routerLink="" mat-button>          
+          Product
+        </a>
+        <a *ngIf="!loginService.isLoggedIn" routerLink="/login" mat-raised-button color="warn">          
+          Login
+        </a>
+        <a *ngIf="loginService.isLoggedIn" mat-raised-button color="warn" (click)="signOutClicked()">          
+          Sign out
+        </a>
+      </div>
+      <!-- Humburger Menu -->
+      <button mat-button [matMenuTriggerFor]="menu" class="menu-btn">
+          <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" class="menu-box">            
+        <a routerLink="">
+          <button mat-menu-item>
             User
-          </a>
-          <a routerLink="" mat-button>          
+          </button>
+        </a>
+        <a routerLink="">          
+          <button mat-menu-item>
             Product
-          </a>
-          <a *ngIf="!loginService.isLoggedIn" routerLink="/login" mat-raised-button color="warn">          
+          </button>
+        </a>
+        <button mat-menu-item *ngIf="!loginService.isLoggedIn">
+          <a routerLink="/login" mat-raised-button color="warn">          
             Login
           </a>
-          <a *ngIf="loginService.isLoggedIn" mat-raised-button color="warn" (click)="signOutClicked()">          
+        </button>
+        <button mat-menu-item *ngIf="loginService.isLoggedIn">
+          <a mat-raised-button color="warn" (click)="signOutClicked()">          
             Sign out
           </a>
-        </div>
-    </mat-toolbar>
-</div>
+        </button>
+      </mat-menu>
+  </mat-toolbar>
+</nav>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Validation } from './password-validator';
 import { RegistrationService } from '../../services/registration.service';
+import { Router } from '@angular/router'
 import { EMPTY_STRING, NUMBER_REGEXP } from 'src/app/utility/constants';
 
 @Component({
@@ -17,7 +18,8 @@ export class RegistrationComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private registrationService: RegistrationService
+    private registrationService: RegistrationService,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -39,6 +41,7 @@ export class RegistrationComponent implements OnInit {
     );
   }  
 
+  // vraca kontrolu od register forme
   get form(): { [key: string]: AbstractControl } {
     return this.registerForm.controls;
   }
@@ -50,10 +53,10 @@ export class RegistrationComponent implements OnInit {
       return;
     }
 
-    this.registrationService.registerUser(this.registerForm.value).subscribe((data: any) => {
-      console.log(data);
-    });
+    this.registrationService.registerUser(this.registerForm.value).subscribe();
 
-    alert('You have signed up successfully!')
+    alert('You have signed up successfully!');
+
+    this.router.navigate(['/login']);
   }
 }

@@ -8,9 +8,6 @@ import { TOKEN_KEY, EMPTY_STRING } from '../utility/constants';
   providedIn: 'root'
 })
 export class LoginService {
-  
-  currentUser = {};
-  errorThrown: boolean = false;
 
   constructor(
     private httpClient: HttpClient,
@@ -41,5 +38,6 @@ export class LoginService {
     if(removeToken === null) {
       this.router.navigate([EMPTY_STRING]);
     }
+    this.router.navigate(['/login']);
   }
 }
