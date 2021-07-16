@@ -1,16 +1,17 @@
 <section class="login-section">
     <img src="../../../assets/images/shared/ship.svg" alt="" class="ship-img">
-    <mat-card (click)="cardClicked()">
+    <mat-card>
         <mat-card-title>Login</mat-card-title>
         <mat-card-content>
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <div>
                     <mat-form-field appearance="standard">
                         <mat-label>Username</mat-label>
-                        <input formControlName="username" matInput placeholder="Username">                    
+                        <input formControlName="username" matInput placeholder="Username" autocomplete="off">                    
                     </mat-form-field>
-                    <div *ngIf="submitted && form.username.errors">
-                        <div *ngIf="form.username.errors.required" class="input-error-message">Username is required</div>
+                    <div *ngIf="form.username.errors">
+                        <!-- ako je polje prazno i kliknuto ili je polje prazno a forma submitovana => prikazi poruku da polje nije validno -->
+                        <div *ngIf="form.username.errors.required && form.username.touched || submitted && form.username.errors.required" class="input-error-message">Username is required</div>
                     </div>
                 </div>
                 <div>
@@ -18,8 +19,8 @@
                         <mat-label>Password</mat-label>
                         <input formControlName="password" type="password" matInput placeholder="Password">
                     </mat-form-field>
-                    <div *ngIf="submitted && form.password.errors">
-                        <div *ngIf="form.password.errors.required" class="input-error-message">Password is required</div>
+                    <div *ngIf="form.password.errors">
+                        <div *ngIf="form.password.errors.required && form.password.touched || submitted && form.password.errors.required" class="input-error-message">Password is required</div>
                         <div *ngIf="form.password.errors.minlength" class="input-error-message">Password must have at least 5 characters</div>
                     </div>
                 </div>
