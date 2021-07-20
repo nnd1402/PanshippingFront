@@ -6,18 +6,25 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
+import { FormsModule } from '@angular/forms';
 // _____________ Components _____________
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { ProductComponent } from './components/product/product.component';
+import { ProductAddComponent } from './components/product-add/product-add.component';
+import { ProductAddModalComponent } from './components/product-add/product-add.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationComponent,
     LoginComponent,
-    NavigationComponent
+    NavigationComponent,
+    ProductComponent,
+    ProductAddComponent,
+    ProductAddModalComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +32,8 @@ import { NavigationComponent } from './components/navigation/navigation.componen
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

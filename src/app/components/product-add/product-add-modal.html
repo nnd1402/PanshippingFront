@@ -1,0 +1,55 @@
+<h1 mat-dialog-title>Add Product</h1>
+<div mat-dialog-content>
+  <form [formGroup]="addProductForm" (ngSubmit)="onSubmit()">
+    <!-- name input -->
+    <div>
+      <mat-form-field appearance="standard">
+          <mat-label for="firstName">Name</mat-label>                    
+          <input formControlName="name" matInput placeholder="Name" autocomplete="off">                        
+      </mat-form-field>
+      <div *ngIf="form.name.errors">
+          <!-- ako je polje prazno i kliknuto ili je polje prazno a forma submitovana => prikazi poruku da polje nije validno -->
+          <div *ngIf="form.name.errors.required && form.name.touched || form.name.errors.required && submitted" class="input-error-message">Name is required</div>
+      </div>
+    </div>
+    <!-- price input -->
+    <div>
+      <mat-form-field appearance="standard">
+          <mat-label for="price">Price</mat-label>                    
+          <input formControlName="price" matInput placeholder="Price" autocomplete="off" ngModel pattern="^\d*(\.\d+)?$">                        
+      </mat-form-field>
+      <div *ngIf="form.price.errors">
+          <!-- ako je polje prazno i kliknuto ili je polje prazno a forma submitovana => prikazi poruku da polje nije validno -->
+          <div *ngIf="form.price.errors.required && form.price.touched || form.price.errors.required && submitted" class="input-error-message">Price is required</div>
+          <div *ngIf="form.price.errors.pattern" class="input-error-message">Price must be a number</div>
+      </div>
+    </div>
+    <!-- quantity input -->
+    <div>
+      <mat-form-field appearance="standard">
+          <mat-label for="quantity">Quantity</mat-label>                    
+          <input formControlName="quantity" matInput placeholder="Quantity" autocomplete="off">                        
+      </mat-form-field>
+      <div *ngIf="form.quantity.errors">
+          <!-- ako je polje prazno i kliknuto ili je polje prazno a forma submitovana => prikazi poruku da polje nije validno -->
+          <div *ngIf="form.quantity.errors.required && form.quantity.touched || form.quantity.errors.required && submitted" class="input-error-message">Quantity is required</div>
+          <div *ngIf="form.quantity.errors.pattern" class="input-error-message">Quantity must be whole number</div>
+      </div>
+    </div>
+    <!-- description input -->
+    <div>
+      <mat-form-field appearance="standard">
+          <mat-label for="description">Description</mat-label>                    
+          <textarea formControlName="description" matInput placeholder="Description" autocomplete="off"></textarea>                      
+      </mat-form-field>
+      <div *ngIf="form.description.errors">
+          <!-- ako je polje prazno i kliknuto ili je polje prazno a forma submitovana => prikazi poruku da polje nije validno -->
+          <div *ngIf="form.description.errors.required && form.description.touched || form.description.errors.required && submitted" class="input-error-message">Description is required</div>
+      </div>
+    </div>
+    <div class="btn-box">
+      <button type="submit" mat-raised-button color="primary">Add</button>
+      <button mat-button (click)="onNoClick()">Cancel</button>
+    </div>
+  </form>
+</div>
