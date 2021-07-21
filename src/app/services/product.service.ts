@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IProduct } from '../interfaces/product';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +18,9 @@ export class ProductService {
 
   addProduct(product: IProduct) {
     return this.httpClient.post<IProduct>('/api/product/addProduct', JSON.stringify(product), this.httpHeader);
+  }
+
+  getProducts(): Observable<any> {
+    return this.httpClient.get<any>('/api/product');
   }
 }

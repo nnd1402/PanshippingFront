@@ -15,6 +15,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { ProductComponent } from './components/product/product.component';
 import { ProductAddComponent } from './components/product-add/product-add.component';
 import { ProductAddModalComponent } from './components/product-add/product-add.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ProductAddModalComponent } from './components/product-add/product-add.c
     NavigationComponent,
     ProductComponent,
     ProductAddComponent,
-    ProductAddModalComponent
+    ProductAddModalComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,

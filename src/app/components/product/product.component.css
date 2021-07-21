@@ -1,4 +1,25 @@
 .product-section {
     min-height: 100vh;
-    padding: calc(64px + 50px) 50px 50px 50px;
+    padding: calc(64px + 50px) 50px 50px 50px;    
+    background-color: #673AB7;
+}
+
+.ship-img {
+    position: fixed;
+    width: 50%;
+    left: 0;
+    bottom: 0;
+}
+
+.product-btn-container {
+    display: inline-block;
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 768px) {
+    .ship-img {
+        display: none;
+    }
 }
