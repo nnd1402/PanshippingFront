@@ -4,16 +4,16 @@
         <span><mat-icon>directions_boat</mat-icon><span class="brand-name">Pan</span>Shipping</span> 
       </a>       
       <div class="link-container">
-        <a routerLink="" mat-button *ngIf="loginService.isLoggedIn">
+        <a routerLink="" mat-button *ngIf="isLoggedIn()">
           User
         </a>
         <a routerLink="/product" mat-button>          
           Product
         </a>
-        <a *ngIf="!loginService.isLoggedIn" routerLink="/login" mat-raised-button color="warn">          
+        <a *ngIf="!isLoggedIn()" routerLink="/login" mat-raised-button color="warn">          
           Login
         </a>
-        <a *ngIf="loginService.isLoggedIn" mat-raised-button color="warn" (click)="signOutClicked()">          
+        <a *ngIf="isLoggedIn()" mat-raised-button color="warn" (click)="signOutClicked()">          
           Sign out
         </a>
       </div>
@@ -23,7 +23,7 @@
       </button>
       <mat-menu #menu="matMenu" class="menu-box">            
         <a routerLink="">
-          <button mat-menu-item *ngIf="loginService.isLoggedIn">
+          <button mat-menu-item *ngIf="isLoggedIn()">
             User
           </button>
         </a>
@@ -32,12 +32,12 @@
             Product
           </button>
         </a>
-        <button mat-menu-item *ngIf="!loginService.isLoggedIn">
+        <button mat-menu-item *ngIf="!isLoggedIn()">
           <a routerLink="/login" mat-raised-button color="warn">          
             Login
           </a>
         </button>
-        <button mat-menu-item *ngIf="loginService.isLoggedIn">
+        <button mat-menu-item *ngIf="isLoggedIn()">
           <a mat-raised-button color="warn" (click)="signOutClicked()">          
             Sign out
           </a>
