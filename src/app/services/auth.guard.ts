@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot,  Router } from '@angular/router';
 import { LoginService } from './login.service';
-// import { LOGIN_URL, REGISTRATION_URL, USER_URL, EMPTY_STRING } from '../utility/constants';
+import { LOGIN_URL, REGISTRATION_URL, USER_URL, EMPTY_STRING } from '../utility/constants';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +15,7 @@ export class AuthGuard implements CanActivate {
 
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      /*
+    state: RouterStateSnapshot): boolean {
     // ako je korisnik ulogovan
     if(this.loginService.isLoggedIn) {
       // i pokusa da pristupi login-u ili registraciji
@@ -33,7 +31,6 @@ export class AuthGuard implements CanActivate {
       this.router.navigate([LOGIN_URL]);
       return false;
     }
-    */
     return true;
   }  
 }

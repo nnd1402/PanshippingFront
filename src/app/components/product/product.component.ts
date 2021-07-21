@@ -14,7 +14,7 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    public loginService: LoginService
+    private loginService: LoginService
   ) { }
 
   ngOnInit(): void {
@@ -25,5 +25,10 @@ export class ProductComponent implements OnInit {
     this.productService.getProducts().subscribe((data) => {
       this.products = data;
     });
+  }
+
+  // proveri da li je user ulogovan
+  isLoggedIn(): boolean {
+    return this.loginService.isLoggedIn;
   }
 }

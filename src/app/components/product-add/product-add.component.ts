@@ -74,8 +74,6 @@ export class ProductAddModalComponent implements OnInit {
     }
   
     this.productService.addProduct(this.addProductForm.value).subscribe();
-  
-    alert('Product added!');
 
     this.onNoClick();
   }
