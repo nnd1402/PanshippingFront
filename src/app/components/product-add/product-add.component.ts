@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { IProduct } from '../../interfaces/product';
 import { AbstractControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { EMPTY_STRING, NUMBER_REGEXP } from 'src/app/utility/constants';
+import { EMPTY_STRING, NUMBER_REGEXP, PRICE_REGEXP } from 'src/app/utility/constants';
 import { LoginService } from 'src/app/services/login.service';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -55,7 +55,7 @@ export class ProductAddModalComponent implements OnInit {
     this.addProductForm = this.formBuilder.group({
       id: [EMPTY_STRING],
       name: [EMPTY_STRING, Validators.required],
-      price: [EMPTY_STRING, Validators.required],
+      price: [EMPTY_STRING, [Validators.required, Validators.pattern(PRICE_REGEXP)]],
       quantity: [EMPTY_STRING, [Validators.required, Validators.pattern(NUMBER_REGEXP)]],
       description: [EMPTY_STRING, Validators.required],
       user: [this.userId]

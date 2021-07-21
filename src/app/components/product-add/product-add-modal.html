@@ -16,7 +16,7 @@
     <div>
       <mat-form-field appearance="standard">
           <mat-label for="price">Price</mat-label>                    
-          <input formControlName="price" matInput placeholder="Price" autocomplete="off" ngModel pattern="^\d*(\.\d+)?$">                        
+          <input formControlName="price" matInput placeholder="Price" autocomplete="off">                        
       </mat-form-field>
       <div *ngIf="form.price.errors">
           <!-- ako je polje prazno i kliknuto ili je polje prazno a forma submitovana => prikazi poruku da polje nije validno -->
