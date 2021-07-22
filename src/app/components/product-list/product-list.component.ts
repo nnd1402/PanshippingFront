@@ -13,6 +13,8 @@ export class ProductListComponent implements OnInit {
 
   @Input() productList?: IProduct[];
   @Input() isLoggedIn?: boolean;
+  @Output() editClosed = new EventEmitter();
+  @Output() deleteClosed = new EventEmitter();
 
 
   constructor(public dialog: MatDialog) { }
@@ -32,6 +34,11 @@ export class ProductListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
+
+    // kada se modal zatvori obavesti parent element o tome
+    this.dialog.afterAllClosed.subscribe(() => {
+      this.editClosed.emit();
+    });
   }
 
   // metoda za otvaranje delete modala koja se poziva iz product-list template-a
@@ -44,6 +51,11 @@ export class ProductListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+    });
+
+    // kada se modal zatvori obavesti parent element o tome
+    this.dialog.afterAllClosed.subscribe(() => {
+      this.deleteClosed.emit();
     });
   }
 }

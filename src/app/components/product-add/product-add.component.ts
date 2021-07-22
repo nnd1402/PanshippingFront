@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { IProduct } from '../../interfaces/product';
 import { AbstractControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -15,6 +15,7 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./product-add.component.css']
 })
 export class ProductAddComponent {
+  @Output() addClosed = new EventEmitter();
 
   constructor(public dialog: MatDialog) {}
 
@@ -25,6 +26,10 @@ export class ProductAddComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+    });
+
+    this.dialog.afterAllClosed.subscribe(() => {
+      this.addClosed.emit();
     });
   }
 }
