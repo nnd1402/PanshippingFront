@@ -23,4 +23,12 @@ export class ProductService {
   getProducts(): Observable<any> {
     return this.httpClient.get<any>('/api/product');
   }
+
+  editProduct(product: IProduct): Observable<IProduct> {
+    return this.httpClient.put<IProduct>(`/api/product/${product.id}`, JSON.stringify(product), this.httpHeader);
+  }
+
+  deleteProduct(productId: string): Observable<any> {
+    return this.httpClient.delete<any>(`/api/product/${productId}`);
+  }
 }

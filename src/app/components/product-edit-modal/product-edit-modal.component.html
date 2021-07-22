@@ -1,10 +1,10 @@
-<h1 mat-dialog-title>Add Product</h1>
+<h1 mat-dialog-title>Edit Product</h1>
 <div mat-dialog-content>
-  <form [formGroup]="addProductForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="editProductForm" (ngSubmit)="onSubmit()">
     <!-- name input -->
     <div>
       <mat-form-field appearance="standard">
-          <mat-label for="name">Name</mat-label>                    
+          <mat-label for="firstName">Name</mat-label>                    
           <input formControlName="name" matInput placeholder="Name" autocomplete="off">                        
       </mat-form-field>
       <div *ngIf="form.name.errors">
@@ -48,8 +48,8 @@
       </div>
     </div>
     <div class="btn-box">
-      <button type="submit" mat-raised-button color="primary">Add</button>
-      <button mat-button (click)="onNoClick()">Cancel</button>
+      <button type="submit" mat-raised-button color="primary">Save</button>
+      <button type="button" mat-button (click)="onNoClick()">Cancel</button>
     </div>
   </form>
 </div>

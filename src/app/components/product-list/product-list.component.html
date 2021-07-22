@@ -13,9 +13,11 @@
           <div class="quantity-box">Quantity: {{ product.quantity }}</div>
           <div class="price-box">Price: {{ product.price | currency}}</div>
         </mat-card-content>
+        <hr>
         <mat-card-actions>
-          <!-- <button mat-button>LIKE</button>
-          <button mat-button>SHARE</button> -->
+          <!-- prosledi proizvod u funkciju za otvaranje edit modala -->
+          <button *ngIf="isLoggedIn" mat-raised-button color="accent" (click)="openEditDialog(product)">Edit</button>
+          <button *ngIf="isLoggedIn" mat-button color="warn" (click)="openDeleteDialog(product.id)">Delete</button>
         </mat-card-actions>
       </mat-card>
 </div>

@@ -10,7 +10,7 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class ProductComponent implements OnInit {
 
-  products?: IProduct[];
+  products!: IProduct[];
 
   constructor(
     private productService: ProductService,
@@ -30,5 +30,15 @@ export class ProductComponent implements OnInit {
   // proveri da li je user ulogovan
   isLoggedIn(): boolean {
     return this.loginService.isLoggedIn;
+  }
+
+  editProduct(product: IProduct) {
+    this.productService.editProduct(product).subscribe();
+    this.loadProducts();
+  }
+
+  deleteProduct(productId: string) {
+    this.productService.deleteProduct(productId).subscribe();
+    this.loadProducts();
   }
 }
