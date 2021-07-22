@@ -9,7 +9,7 @@ import { LoginService } from 'src/app/services/login.service';
 export class NavigationComponent implements OnInit {
 
   constructor(
-    public loginService: LoginService
+    private loginService: LoginService
   ) { }
 
   ngOnInit(): void {
@@ -19,4 +19,7 @@ export class NavigationComponent implements OnInit {
     this.loginService.logout();
   }
   
+  isLoggedIn(): boolean {
+    return this.loginService.isLoggedIn;
+  }
 }

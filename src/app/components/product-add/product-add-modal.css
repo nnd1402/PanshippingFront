@@ -1,0 +1,13 @@
+mat-form-field {
+    width: 100%;
+}
+
+.input-error-message {
+    color: #f00;
+}
+
+.btn-box {
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-around;
+}
