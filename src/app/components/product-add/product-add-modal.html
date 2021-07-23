@@ -9,7 +9,20 @@
       </mat-form-field>
       <div *ngIf="form.name.errors">
           <!-- ako je polje prazno i kliknuto ili je polje prazno a forma submitovana => prikazi poruku da polje nije validno -->
-          <div *ngIf="form.name.errors.required && form.name.touched || form.name.errors.required && submitted" class="input-error-message">Name is required</div>
+          <div *ngIf="form.name.errors.required && form.name.touched || form.name.errors.required && submitted" class="input-error-message name-error">Name is required</div>
+      </div>
+    </div>
+    <!-- image input -->    
+    <div>
+      <mat-label>Image</mat-label>
+      <input [hidden]="true" #imageInput multiple type="file" accept="image/*" (change)="showPreview($event)"/>
+      <button mat-raised-button class="img-btn" type="button" color="primary" (click)="imageInput.click()">Choose Image</button>
+      <div *ngIf="imageURL && imageURL !== ''">
+        <img [src]="imageURL">
+      </div>
+      <div *ngIf="form.image.errors">
+        <!-- ako je polje prazno i kliknuto ili je polje prazno a forma submitovana => prikazi poruku da polje nije validno -->
+        <div *ngIf="form.image.errors.required && form.image.touched || form.image.errors.required && submitted" class="input-error-message">Image is required</div>
       </div>
     </div>
     <!-- price input -->

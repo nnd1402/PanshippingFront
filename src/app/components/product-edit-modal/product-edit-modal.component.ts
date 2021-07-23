@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject, Input } from '@angular/core';
 import { AbstractControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { NUMBER_REGEXP, PRICE_REGEXP} from 'src/app/utility/constants';
+import { EMPTY_STRING, NUMBER_REGEXP, PRICE_REGEXP} from 'src/app/utility/constants';
 import { IProduct } from '../../interfaces/product';
 import { LoginService } from 'src/app/services/login.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -16,6 +16,7 @@ export class ProductEditModalComponent implements OnInit {
   editProductForm!: FormGroup;
   submitted: boolean = false;
   product!: IProduct;
+  imageURL?: string;
 
   constructor(
     public dialogRef: MatDialogRef<ProductEditModalComponent>,
@@ -40,6 +41,7 @@ export class ProductEditModalComponent implements OnInit {
       price: [this.product.price, [Validators.required, Validators.pattern(PRICE_REGEXP)]],
       quantity: [this.product.quantity, [Validators.required, Validators.pattern(NUMBER_REGEXP)]],
       description: [this.product.description, Validators.required],
+      image: [EMPTY_STRING, Validators.required],
       user: [this.userId]
     });
   }
@@ -65,4 +67,23 @@ export class ProductEditModalComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  // prikazi sliku u formi i podesi input polje za sliku na base64 string
+  showPreview(event: any) {
+    const reader = new FileReader();
+    if(event.target.files && event.target.files.length) {
+      const[file] = event.target.files;
+      reader.readAsDataURL(file);
+
+      // podesi vrednost image input-a u formi na base64 string
+      reader.onload = () => {
+        this.imageURL = reader.result as string;
+        // iseci data:image/jpeg;base64, deo iz stringa
+        const imageBase64 = this.imageURL.split(',')[1] + '';
+        // postavi vrednost image inputa u formi na imageBase64
+        this.editProductForm.patchValue({
+          image: imageBase64
+        })
+      }
+    }
+  }
 }

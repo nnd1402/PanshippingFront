@@ -10,7 +10,7 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class ProductComponent implements OnInit {
 
-  products!: IProduct[];
+  products?: IProduct[];
 
   constructor(
     private productService: ProductService,

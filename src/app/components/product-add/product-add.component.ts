@@ -24,10 +24,6 @@ export class ProductAddComponent {
       width: '500px'
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
-
     this.dialog.afterAllClosed.subscribe(() => {
       this.addClosed.emit();
     });
@@ -44,6 +40,7 @@ export class ProductAddModalComponent implements OnInit {
 
   addProductForm!: FormGroup;
   submitted: boolean = false;
+  imageURL?: string;
 
   constructor(
     public dialogRef: MatDialogRef<ProductAddModalComponent>,
@@ -63,6 +60,7 @@ export class ProductAddModalComponent implements OnInit {
       price: [EMPTY_STRING, [Validators.required, Validators.pattern(PRICE_REGEXP)]],
       quantity: [EMPTY_STRING, [Validators.required, Validators.pattern(NUMBER_REGEXP)]],
       description: [EMPTY_STRING, Validators.required],
+      image: [EMPTY_STRING, Validators.required],
       user: [this.userId]
     });
   }
@@ -86,6 +84,26 @@ export class ProductAddModalComponent implements OnInit {
   // zatvori modal
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  // prikazi sliku u formi i podesi input polje za sliku na base64 string
+  showPreview(event: any) {
+    const reader = new FileReader();
+    if(event.target.files && event.target.files.length) {
+      const[file] = event.target.files;
+      reader.readAsDataURL(file);
+
+      // podesi vrednost image input-a u formi na base64 string
+      reader.onload = () => {
+        this.imageURL = reader.result as string;
+        // iseci data:image/jpeg;base64, deo iz stringa
+        const imageBase64 = this.imageURL.split(',')[1] + '';
+        // postavi vrednost image inputa u formi na imageBase64
+        this.addProductForm.patchValue({
+          image: imageBase64
+        })
+      }
+    }
   }
 }
 

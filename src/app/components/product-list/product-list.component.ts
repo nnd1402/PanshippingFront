@@ -31,10 +31,6 @@ export class ProductListComponent implements OnInit {
       data: product
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
-
     // kada se modal zatvori obavesti parent element o tome
     this.dialog.afterAllClosed.subscribe(() => {
       this.editClosed.emit();
@@ -47,10 +43,6 @@ export class ProductListComponent implements OnInit {
     const dialogRef = this.dialog.open(ProductDeleteModalComponent, {
       width: '500px',
       data: productId
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
     });
 
     // kada se modal zatvori obavesti parent element o tome
