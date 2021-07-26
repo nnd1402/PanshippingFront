@@ -24,6 +24,8 @@ export class ProductAddComponent {
       width: '500px'
     });
 
+    this.addClosed.emit()
+
     this.dialog.afterAllClosed.subscribe(() => {
       this.addClosed.emit();
     });
@@ -60,7 +62,7 @@ export class ProductAddModalComponent implements OnInit {
       price: [EMPTY_STRING, [Validators.required, Validators.pattern(PRICE_REGEXP)]],
       quantity: [EMPTY_STRING, [Validators.required, Validators.pattern(NUMBER_REGEXP)]],
       description: [EMPTY_STRING, Validators.required],
-      image: [EMPTY_STRING, Validators.required],
+      image: [EMPTY_STRING],
       user: [this.userId]
     });
   }
@@ -76,7 +78,9 @@ export class ProductAddModalComponent implements OnInit {
       return;
     }
   
-    this.productService.addProduct(this.addProductForm.value).subscribe();
+    this.productService.addProduct(this.addProductForm.value).subscribe(
+      (data => console.log(data))
+    );
 
     this.onNoClick();
   }

@@ -22,9 +22,15 @@ export class ProductComponent implements OnInit {
   }
 
   loadProducts() {
-    this.productService.getProducts().subscribe((data) => {
-      this.products = data;
-    });
+    this.productService.getProducts()
+      .subscribe(
+        (data) => {
+          this.products = data;
+        },
+        (error) => {
+          console.log(error.error);
+        } 
+      );
   }
 
   // proveri da li je user ulogovan

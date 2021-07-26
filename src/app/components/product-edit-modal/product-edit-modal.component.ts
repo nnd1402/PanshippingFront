@@ -16,6 +16,7 @@ export class ProductEditModalComponent implements OnInit {
   editProductForm!: FormGroup;
   submitted: boolean = false;
   product!: IProduct;
+  // url slike za src atribut img elementa u template-u
   imageURL?: string;
 
   constructor(
@@ -29,6 +30,9 @@ export class ProductEditModalComponent implements OnInit {
     // postavi kao vrednost product propertija u ovoj komponenti, koji ce sluziti
     // za popunjavanje input polja u formi
     this.product = data;
+    // ako produkt ima sliku spoji data:image/jpeg;base64
+    // na base64string slike, u suprotnom podesi na prazan string
+    data.image ? this.imageURL = 'data:image/jpeg;base64,' + data.image : '';
   }
 
   // iscupaj id user-a iz local storage
@@ -41,7 +45,7 @@ export class ProductEditModalComponent implements OnInit {
       price: [this.product.price, [Validators.required, Validators.pattern(PRICE_REGEXP)]],
       quantity: [this.product.quantity, [Validators.required, Validators.pattern(NUMBER_REGEXP)]],
       description: [this.product.description, Validators.required],
-      image: [EMPTY_STRING, Validators.required],
+      image: [this.product.image],
       user: [this.userId]
     });
   }
@@ -57,7 +61,10 @@ export class ProductEditModalComponent implements OnInit {
       return;
     }
   
-    this.productService.editProduct(this.editProductForm.value).subscribe();
+    this.productService.editProduct(this.editProductForm.value)
+      .subscribe((data) => {
+        console.log(data);
+      });
 
     this.onNoClick();
   }

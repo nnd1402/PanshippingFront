@@ -11,13 +11,14 @@ export class ProductService {
   httpHeader = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
-    })
+    }),
+    responseType: 'text' as 'json'
   }
 
   constructor(private httpClient: HttpClient) { }
 
-  addProduct(product: IProduct) {
-    return this.httpClient.post<IProduct>('/api/product/addProduct', JSON.stringify(product), this.httpHeader);
+  addProduct(product: IProduct): Observable<any> {
+    return this.httpClient.post<any>('/api/product/addProduct', JSON.stringify(product), this.httpHeader);
   }
 
   getProducts(): Observable<any> {
@@ -29,6 +30,6 @@ export class ProductService {
   }
 
   deleteProduct(productId: string): Observable<any> {
-    return this.httpClient.delete<any>(`/api/product/${productId}`);
+    return this.httpClient.delete<any>(`/api/product/${productId}`, this.httpHeader);
   }
 }
