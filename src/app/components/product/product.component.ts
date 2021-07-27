@@ -41,14 +41,4 @@ export class ProductComponent implements OnInit {
   isLoggedIn(): boolean {
     return this.loginService.isLoggedIn;
   }
-
-  editProduct(product: IProduct) {
-    this.productService.editProduct(product).subscribe();
-    this.loadProducts();
-  }
-
-  deleteProduct(productId: string) {
-    this.productService.deleteProduct(productId).subscribe();
-    this.loadProducts();
-  }
 }
