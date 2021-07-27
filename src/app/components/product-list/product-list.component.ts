@@ -26,13 +26,10 @@ export class ProductListComponent implements OnInit {
 
     // drugi parametar open() metode je dialogConfig u koji se prosledjuju podaci potrebni za modalni prozor,
     // kao data prosledjujem product iz html template-a ciji ce se podaci prikazati u input poljima product-edit-modal.component modala
-    const dialogRef = this.dialog.open(ProductEditModalComponent, {
+    this.dialog.open(ProductEditModalComponent, {
       width: '500px',
       data: product
-    });
-
-    // kada se modal zatvori obavesti parent element o tome
-    this.dialog.afterAllClosed.subscribe(() => {
+    }).afterClosed().subscribe(() => {
       this.editClosed.emit();
     });
   }
@@ -40,14 +37,11 @@ export class ProductListComponent implements OnInit {
   // metoda za otvaranje delete modala koja se poziva iz product-list template-a
   openDeleteDialog(productId: string): void {
 
-    const dialogRef = this.dialog.open(ProductDeleteModalComponent, {
+    this.dialog.open(ProductDeleteModalComponent, {
       width: '500px',
       data: productId
-    });
-
-    // kada se modal zatvori obavesti parent element o tome
-    this.dialog.afterAllClosed.subscribe(() => {
-      this.deleteClosed.emit();
+    }).afterClosed().subscribe(() => {
+      this.editClosed.emit();
     });
   }
 }

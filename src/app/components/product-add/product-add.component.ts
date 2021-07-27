@@ -20,11 +20,9 @@ export class ProductAddComponent {
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(ProductAddModalComponent, {
+    this.dialog.open(ProductAddModalComponent, {
       width: '500px'
-    });
-
-    this.dialog.afterAllClosed.subscribe(() => {
+    }).afterClosed().subscribe(() => {
       this.addClosed.emit();
     });
   }
