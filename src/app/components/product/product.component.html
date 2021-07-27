@@ -4,5 +4,5 @@
     <div class="product-btn-container" *ngIf="isLoggedIn()">
         <app-product-add (addClosed)="loadProducts()"></app-product-add>
     </div>
-    <app-product-list [productList]="products" [isLoggedIn]="isLoggedIn()" (addClosed)="loadProducts()" (editClosed)="loadProducts()" (deleteClosed)="loadProducts()"></app-product-list>
+    <app-product-list *ngIf="haveProducts" [productList]="products" [isLoggedIn]="isLoggedIn()" (addClosed)="loadProducts()" (editClosed)="loadProducts()" (deleteClosed)="loadProducts()"></app-product-list>
 </section>

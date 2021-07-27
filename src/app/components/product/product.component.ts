@@ -11,6 +11,8 @@ import { LoginService } from 'src/app/services/login.service';
 export class ProductComponent implements OnInit {
 
   products?: IProduct[];
+  // za template - ako ima proizvoda prikazi ih a ako nema ne
+  haveProducts: boolean = false;
 
   constructor(
     private productService: ProductService,
@@ -26,9 +28,11 @@ export class ProductComponent implements OnInit {
       .subscribe(
         (data) => {
           this.products = data;
+          this.haveProducts = true;
         },
         (error) => {
           console.log(error.error);
+          this.haveProducts = false;
         } 
       );
   }

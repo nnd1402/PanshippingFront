@@ -24,8 +24,6 @@ export class ProductAddComponent {
       width: '500px'
     });
 
-    this.addClosed.emit()
-
     this.dialog.afterAllClosed.subscribe(() => {
       this.addClosed.emit();
     });
