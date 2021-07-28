@@ -2,7 +2,6 @@ import { Component, OnInit, Inject, Input } from '@angular/core';
 import { AbstractControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { IUser } from '../../interfaces/user';
-import { LoginService } from 'src/app/services/login.service';
 import { UserService } from 'src/app/services/user.service';
 import { NUMBER_REGEXP } from 'src/app/utility/constants';
 
@@ -16,8 +15,6 @@ export class UserEditModalComponent implements OnInit {
   editUserForm!: FormGroup;
   submitted: boolean = false;
   user!: IUser;
-  // url slike za src atribut img elementa u template-u
-  imageURL?: string;
 
   constructor(
     public dialogRef: MatDialogRef<UserEditModalComponent>,
@@ -26,7 +23,6 @@ export class UserEditModalComponent implements OnInit {
     private userService: UserService
   ) {
     this.user = data;
-    console.log(this.user)
   }
 
   ngOnInit() {
@@ -38,7 +34,7 @@ export class UserEditModalComponent implements OnInit {
       address: [this.user.address, Validators.required],
       country: [this.user.country, Validators.required],
       phone: [this.user.phone, [Validators.required, Validators.pattern(NUMBER_REGEXP)]],
-      username: [this.user.userName],
+      username: [this.user.username],
       password: [this.user.password]
     });
   }
@@ -53,7 +49,7 @@ export class UserEditModalComponent implements OnInit {
     if(this.editUserForm.invalid) {
       return;
     }
-    console.log(this.editUserForm.value)
+    
     this.userService.editUser(this.editUserForm.value)
       .subscribe((data) => {
         console.log(data);

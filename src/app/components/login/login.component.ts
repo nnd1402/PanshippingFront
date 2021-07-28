@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
       (data: any) => {
         localStorage.setItem(TOKEN_KEY, JSON.stringify(data));
         this.currentUser = data;
-        this.router.navigate([EMPTY_STRING]);
+        this.router.navigate(['/user']);
       },
       (error) => {
         this.hasError = true;
