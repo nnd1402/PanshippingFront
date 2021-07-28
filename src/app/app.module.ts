@@ -18,6 +18,8 @@ import { ProductAddModalComponent } from './components/product-add/product-add.c
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductEditModalComponent } from './components/product-edit-modal/product-edit-modal.component';
 import { ProductDeleteModalComponent } from './components/product-delete-modal/product-delete-modal.component';
+import { UserComponent } from './components/user/user.component';
+import { UserEditModalComponent } from './components/user-edit-modal/user-edit-modal.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { ProductDeleteModalComponent } from './components/product-delete-modal/p
     ProductAddModalComponent,
     ProductListComponent,
     ProductEditModalComponent,
-    ProductDeleteModalComponent
+    ProductDeleteModalComponent,
+    UserComponent,
+    UserEditModalComponent
   ],
   imports: [
     BrowserModule,

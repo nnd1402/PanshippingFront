@@ -4,7 +4,7 @@
         <span><mat-icon>directions_boat</mat-icon><span class="brand-name">Pan</span>Shipping</span> 
       </a>       
       <div class="link-container">
-        <a routerLink="" mat-button *ngIf="isLoggedIn()">
+        <a routerLink="/user" mat-button *ngIf="isLoggedIn()">
           User
         </a>
         <a routerLink="/product" mat-button>          
@@ -22,7 +22,7 @@
           <mat-icon>menu</mat-icon>
       </button>
       <mat-menu #menu="matMenu" class="menu-box">            
-        <a routerLink="">
+        <a routerLink="/user">
           <button mat-menu-item *ngIf="isLoggedIn()">
             User
           </button>

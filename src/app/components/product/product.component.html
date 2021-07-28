@@ -5,4 +5,7 @@
         <app-product-add (addClosed)="loadProducts()"></app-product-add>
     </div>
     <app-product-list *ngIf="haveProducts" [productList]="products" [isLoggedIn]="isLoggedIn()" (editClosed)="loadProducts()" (deleteClosed)="loadProducts()"></app-product-list>
+    <div *ngIf="!haveProducts" class="product-message">
+        <h1>Product list is empty !</h1>
+    </div>
 </section>
