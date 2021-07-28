@@ -78,11 +78,11 @@ export class ProductAddModalComponent implements OnInit {
       (data => console.log(data))
     );
 
-    this.onNoClick();
+    this.closeDialog();
   }
 
   // zatvori modal
-  onNoClick(): void {
+  closeDialog(): void {
     this.dialogRef.close();
   }
 

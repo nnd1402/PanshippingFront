@@ -28,11 +28,11 @@ export class ProductDeleteModalComponent implements OnInit {
         console.log(data);
       });
 
-    this.onNoClick();
+    this.closeDialog();
   }
 
   // zatvori modal
-  onNoClick(): void {
+  closeDialog(): void {
     this.dialogRef.close();
   }
 }
