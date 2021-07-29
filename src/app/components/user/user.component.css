@@ -6,7 +6,6 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    z-index: 1000;
 }
 
 .ship-img {
@@ -63,23 +62,4 @@ mat-card-content p {
 
 mat-card-content p span {
     color: #7e7777;
-}
-
-.product-checkbox {
-    padding: 20px;
-    background-color: #F55F44;
-    color: #fff;
-    margin-top: 50px;
-    border-radius: 3px;
-    font-size: 1.3rem;
-    z-index: 1000;
-}
-
-::ng-deep .mat-checkbox-frame {
-    border-color: #fff;
-}
-
-::ng-deep .mat-checkbox-inner-container {
-    height: 20px !important;
-    width: 20px !important;
 }
