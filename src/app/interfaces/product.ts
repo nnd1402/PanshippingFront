@@ -4,5 +4,6 @@ export interface IProduct {
     price: string,
     quantity: string,
     description: string
+    image: string,
     user: string
 }

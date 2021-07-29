@@ -2,7 +2,7 @@
     <img src="../../../assets/images/shared/ship.svg" class="ship-img">
     <!-- ako korisnik nije ulogovan nemoj prikazati dugme -->
     <div class="product-btn-container" *ngIf="isLoggedIn()">
-        <app-product-add></app-product-add>
+        <app-product-add (addClosed)="loadProducts()"></app-product-add>
     </div>
-    <app-product-list [productList]="products"></app-product-list>
+    <app-product-list *ngIf="haveProducts" [productList]="products" [isLoggedIn]="isLoggedIn()" (editClosed)="loadProducts()" (deleteClosed)="loadProducts()"></app-product-list>
 </section>

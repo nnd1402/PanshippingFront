@@ -6,12 +6,6 @@ mat-form-field {
     color: #f00;
 }
 
-.btn-box {
-    padding-top: 1rem;
-    display: flex;
-    justify-content: space-around;
-}
-
 img {
     width: 100%;
 }
@@ -19,6 +13,12 @@ img {
 .img-btn {
     display: block;
     margin: 1rem 0;
+}
+
+.btn-box {
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-around;
 }
 
 .input-error-message.name-error {

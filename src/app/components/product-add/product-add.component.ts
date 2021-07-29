@@ -1,8 +1,8 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { IProduct } from '../../interfaces/product';
 import { AbstractControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { EMPTY_STRING, NUMBER_REGEXP, PRICE_REGEXP } from 'src/app/utility/constants';
+import { EMPTY_STRING, NUMBER_REGEXP, PRICE_REGEXP, COMMA } from 'src/app/utility/constants';
 import { LoginService } from 'src/app/services/login.service';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -15,16 +15,15 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./product-add.component.css']
 })
 export class ProductAddComponent {
+  @Output() addClosed = new EventEmitter();
 
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(ProductAddModalComponent, {
+    this.dialog.open(ProductAddModalComponent, {
       width: '500px'
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+    }).afterClosed().subscribe(() => {
+      this.addClosed.emit();
     });
   }
 }
@@ -39,6 +38,7 @@ export class ProductAddModalComponent implements OnInit {
 
   addProductForm!: FormGroup;
   submitted: boolean = false;
+  imageURL?: string;
 
   constructor(
     public dialogRef: MatDialogRef<ProductAddModalComponent>,
@@ -58,6 +58,7 @@ export class ProductAddModalComponent implements OnInit {
       price: [EMPTY_STRING, [Validators.required, Validators.pattern(PRICE_REGEXP)]],
       quantity: [EMPTY_STRING, [Validators.required, Validators.pattern(NUMBER_REGEXP)]],
       description: [EMPTY_STRING, Validators.required],
+      image: [EMPTY_STRING],
       user: [this.userId]
     });
   }
@@ -73,14 +74,36 @@ export class ProductAddModalComponent implements OnInit {
       return;
     }
   
-    this.productService.addProduct(this.addProductForm.value).subscribe();
+    this.productService.addProduct(this.addProductForm.value).subscribe(
+      (data => console.log(data))
+    );
 
-    this.onNoClick();
+    this.closeDialog();
   }
 
   // zatvori modal
-  onNoClick(): void {
+  closeDialog(): void {
     this.dialogRef.close();
+  }
+
+  // prikazi sliku u formi i podesi input polje za sliku na base64 string
+  showPreview(event: any) {
+    const reader = new FileReader();
+    if(event.target.files && event.target.files.length) {
+      const[file] = event.target.files;
+      reader.readAsDataURL(file);
+
+      // podesi vrednost image input-a u formi na base64 string
+      reader.onload = () => {
+        this.imageURL = reader.result as string;
+        // iseci data:image/jpeg;base64, deo iz stringa
+        const imageBase64 = this.imageURL.split(COMMA)[1] + EMPTY_STRING;
+        // postavi vrednost image inputa u formi na imageBase64
+        this.addProductForm.patchValue({
+          image: imageBase64
+        })
+      }
+    }
   }
 }
 

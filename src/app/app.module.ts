@@ -16,6 +16,8 @@ import { ProductComponent } from './components/product/product.component';
 import { ProductAddComponent } from './components/product-add/product-add.component';
 import { ProductAddModalComponent } from './components/product-add/product-add.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
+import { ProductEditModalComponent } from './components/product-edit-modal/product-edit-modal.component';
+import { ProductDeleteModalComponent } from './components/product-delete-modal/product-delete-modal.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { ProductListComponent } from './components/product-list/product-list.com
     ProductComponent,
     ProductAddComponent,
     ProductAddModalComponent,
-    ProductListComponent
+    ProductListComponent,
+    ProductEditModalComponent,
+    ProductDeleteModalComponent
   ],
   imports: [
     BrowserModule,
