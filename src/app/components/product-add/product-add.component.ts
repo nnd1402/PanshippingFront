@@ -2,7 +2,7 @@ import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { IProduct } from '../../interfaces/product';
 import { AbstractControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { EMPTY_STRING, NUMBER_REGEXP, PRICE_REGEXP } from 'src/app/utility/constants';
+import { EMPTY_STRING, NUMBER_REGEXP, PRICE_REGEXP, COMMA } from 'src/app/utility/constants';
 import { LoginService } from 'src/app/services/login.service';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -97,7 +97,7 @@ export class ProductAddModalComponent implements OnInit {
       reader.onload = () => {
         this.imageURL = reader.result as string;
         // iseci data:image/jpeg;base64, deo iz stringa
-        const imageBase64 = this.imageURL.split(',')[1] + '';
+        const imageBase64 = this.imageURL.split(COMMA)[1] + EMPTY_STRING;
         // postavi vrednost image inputa u formi na imageBase64
         this.addProductForm.patchValue({
           image: imageBase64
