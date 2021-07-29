@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject, Input } from '@angular/core';
 import { AbstractControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { EMPTY_STRING, NUMBER_REGEXP, PRICE_REGEXP} from 'src/app/utility/constants';
+import { EMPTY_STRING, NUMBER_REGEXP, PRICE_REGEXP, COMMA, MEDIA_TYPE_URI } from 'src/app/utility/constants';
 import { IProduct } from '../../interfaces/product';
 import { LoginService } from 'src/app/services/login.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -32,7 +32,7 @@ export class ProductEditModalComponent implements OnInit {
     this.product = data;
     // ako produkt ima sliku spoji data:image/jpeg;base64
     // na base64string slike, u suprotnom podesi na prazan string
-    data.image ? this.imageURL = 'data:image/jpeg;base64,' + data.image : '';
+    data.image ? this.imageURL = MEDIA_TYPE_URI + data.image : EMPTY_STRING;
   }
 
   // iscupaj id user-a iz local storage
@@ -85,7 +85,7 @@ export class ProductEditModalComponent implements OnInit {
       reader.onload = () => {
         this.imageURL = reader.result as string;
         // iseci data:image/jpeg;base64, deo iz stringa
-        const imageBase64 = this.imageURL.split(',')[1] + '';
+        const imageBase64 = this.imageURL.split(COMMA)[1] + EMPTY_STRING;
         // postavi vrednost image inputa u formi na imageBase64
         this.editProductForm.patchValue({
           image: imageBase64
