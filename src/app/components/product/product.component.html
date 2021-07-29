@@ -2,9 +2,22 @@
     <img src="../../../assets/images/shared/ship.svg" class="ship-img">
     <!-- ako korisnik nije ulogovan nemoj prikazati dugme -->
     <div class="product-btn-container" *ngIf="isLoggedIn()">
-        <app-product-add (addClosed)="loadProducts()"></app-product-add>
+        <span>
+            <app-product-add (addClosed)="loadAllProducts()"></app-product-add>
+        </span>
+        <span class="check-box">
+            <mat-checkbox (click)="checkClicked()">Show My Products</mat-checkbox>
+        </span>
+        <span class="check-box">            
+            <mat-checkbox>Show My Shippment</mat-checkbox>
+        </span>
     </div>
-    <app-product-list *ngIf="haveProducts" [productList]="products" [isLoggedIn]="isLoggedIn()" (editClosed)="loadProducts()" (deleteClosed)="loadProducts()"></app-product-list>
+    <app-product-list *ngIf="haveProducts" 
+    [productList]="products" 
+    [isLoggedIn]="isLoggedIn()" 
+    (editClosed)="loadUserProducts()" 
+    (deleteClosed)="loadUserProducts()"
+    [showMyProducts]="showChecked"></app-product-list>
     <div *ngIf="!haveProducts" class="product-message">
         <h1>Product list is empty !</h1>
     </div>

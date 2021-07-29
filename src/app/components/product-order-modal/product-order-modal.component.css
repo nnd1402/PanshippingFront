@@ -1,0 +1,9 @@
+mat-dialog-actions {
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+h3 {
+    border-bottom: 1px solid #536DFE;
+}

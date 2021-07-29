@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>Confirm Order</h2>
+<mat-dialog-content class="mat-typography">
+  <h3>Product</h3>
+  <p>
+    Name: <span>{{ product.name }}</span> 
+  </p>
+  <p>
+    Price: <span>{{ product.name | currency }}</span> 
+  </p>
+
+  <h3>User Info</h3>
+  <p>
+    First Name: <span>{{ user.firstName }}</span> 
+  </p>
+  <p>
+    Last Name: <span>{{ user.lastName }}</span> 
+  </p>
+  <p>
+    Email: <span>{{ user.email }}</span> 
+  </p>
+  <p>
+    Address: <span>{{ user.address }}</span> 
+  </p>
+  <p>
+    Country: <span>{{ user.country }}</span> 
+  </p>
+  <p>
+    Phone: <span>{{ user.phone }}</span> 
+  </p>
+
+  <h3>Order Date</h3>
+  <p>{{ order.start }}</p>
+
+  <h3>Delivery Date</h3>
+  <p>{{ order.end }}</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="onConfirmOrder()">Confirm</button>
+    <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>
+

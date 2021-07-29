@@ -13,6 +13,7 @@ export class ProductComponent implements OnInit {
   products?: IProduct[];
   // za template - ako ima proizvoda prikazi ih a ako nema ne
   haveProducts: boolean = false;
+  showChecked: boolean = false;
 
   constructor(
     private productService: ProductService,
@@ -20,11 +21,25 @@ export class ProductComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loadProducts();
+    this.loadAllProducts();
   }
 
-  loadProducts() {
+  loadAllProducts() {
     this.productService.getProducts()
+      .subscribe(
+        (data) => {
+          this.products = data;
+          this.haveProducts = true;
+        },
+        (error) => {
+          console.log(error.error);
+          this.haveProducts = false;
+        } 
+      );
+  }
+
+  loadUserProducts() {
+    this.productService.getProductsByUserId()
       .subscribe(
         (data) => {
           this.products = data;
@@ -40,5 +55,18 @@ export class ProductComponent implements OnInit {
   // proveri da li je user ulogovan
   isLoggedIn(): boolean {
     return this.loginService.isLoggedIn;
+  }
+
+  // ako check box kliknut prikazi samo product-e od ulogovanog usera
+  // u suprotnom prikazi sve product-e
+  checkClicked(): void {
+    if(this.showChecked) {
+      this.showChecked = false;
+      this.loadAllProducts();
+    }
+    else {
+      this.showChecked = true;
+      this.loadUserProducts();
+    }
   }
 }

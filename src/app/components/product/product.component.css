@@ -12,10 +12,12 @@
 }
 
 .product-btn-container {
-    display: inline-block;
-    background-color: #fff;
-    padding: 5px;
-    border-radius: 5px;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 auto;
 }
 
 .product-message {
@@ -36,6 +38,26 @@
     background-color: #F55F44;
     padding: 20px;
     border-radius: 5px;
+}
+
+.check-box {
+    padding: 6px;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: 500;   
+    display: flex;
+    align-items: center;
+}
+
+::ng-deep .mat-checkbox-frame {
+    border-color: #fff;
+}
+
+::ng-deep .mat-checkbox-inner-container {
+    height: 20px !important;
+    width: 20px !important;
 }
 
 @media screen and (max-width: 768px) {

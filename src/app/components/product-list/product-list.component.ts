@@ -3,6 +3,7 @@ import { IProduct } from 'src/app/interfaces/product';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductEditModalComponent } from '../product-edit-modal/product-edit-modal.component';
 import { ProductDeleteModalComponent } from '../product-delete-modal/product-delete-modal.component';
+import { ProductOrderModalComponent } from '../product-order-modal/product-order-modal.component';
 
 @Component({
   selector: 'app-product-list',
@@ -13,6 +14,7 @@ export class ProductListComponent implements OnInit {
 
   @Input() productList?: IProduct[];
   @Input() isLoggedIn?: boolean;
+  @Input() showMyProducts: boolean = false;
   @Output() editClosed = new EventEmitter();
   @Output() deleteClosed = new EventEmitter();
 
@@ -42,6 +44,13 @@ export class ProductListComponent implements OnInit {
       data: productId
     }).afterClosed().subscribe(() => {
       this.editClosed.emit();
+    });
+  }
+
+  openOrderDialog(product: IProduct) {
+    this.dialog.open(ProductOrderModalComponent, {
+      width: '500px',
+      data: product
     });
   }
 }

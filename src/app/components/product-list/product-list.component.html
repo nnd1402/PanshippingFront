@@ -17,8 +17,9 @@
         <hr>
         <mat-card-actions>
           <!-- prosledi proizvod u funkciju za otvaranje edit modala -->
-          <button *ngIf="isLoggedIn" mat-raised-button color="accent" (click)="openEditDialog(product)">Edit</button>
-          <button *ngIf="isLoggedIn" mat-button color="warn" (click)="openDeleteDialog(product.id)">Delete</button>
+          <button *ngIf="isLoggedIn && showMyProducts" mat-raised-button color="accent" (click)="openEditDialog(product)">Edit</button>
+          <button *ngIf="isLoggedIn && showMyProducts" mat-button color="warn" (click)="openDeleteDialog(product.id)">Delete</button>
+          <button *ngIf="isLoggedIn && !showMyProducts" mat-raised-button color="primary" (click)="openOrderDialog(product)">Order</button>
         </mat-card-actions>
       </mat-card>
 </div>
