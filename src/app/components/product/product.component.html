@@ -3,7 +3,7 @@
     <!-- ako korisnik nije ulogovan nemoj prikazati dugme -->
     <div class="product-btn-container" *ngIf="isLoggedIn()">
         <span>
-            <app-product-add (addClosed)="loadAllProducts()"></app-product-add>
+            <app-product-add (addClosed)="loadAddedProduct()"></app-product-add>
         </span>
         <span class="check-box">
             <mat-checkbox (click)="checkClicked()">Show My Products</mat-checkbox>

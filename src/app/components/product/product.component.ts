@@ -24,6 +24,17 @@ export class ProductComponent implements OnInit {
     this.loadAllProducts();
   }
 
+  // ako je Show My Products cekiran, nakon dodavanja proizvoda prikazi samo proizvode usera
+  // ako nije cekiran a novi proizvod je dodat, nakon dodavanja ucitaj sve postojece proizvode sa dodatim 
+  loadAddedProduct() {
+    if(this.showChecked){
+      this.loadUserProducts();
+    }
+    else {
+      this.loadAllProducts();
+    }
+  }
+
   loadAllProducts() {
     this.productService.getProducts()
       .subscribe(
