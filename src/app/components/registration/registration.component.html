@@ -28,6 +28,7 @@
                         <mat-label for="username">Username</mat-label>
                         <input formControlName="username" matInput placeholder="Username" autocomplete="off">
                     </mat-form-field>
+                    <div *ngIf="usernameExists" class="input-error-message">{{ usernameExists }}</div>
                     <div *ngIf="form.username.errors">
                         <div *ngIf="form.username.errors.required && form.username.touched || form.username.errors.required && submitted" class="input-error-message">Username is required</div>
                     </div>

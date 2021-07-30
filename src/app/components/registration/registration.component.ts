@@ -15,6 +15,7 @@ export class RegistrationComponent implements OnInit {
 
   registerForm!: FormGroup;
   submitted = false;
+  usernameExists: string = ''; 
 
   constructor(
     private formBuilder: FormBuilder,
@@ -53,10 +54,13 @@ export class RegistrationComponent implements OnInit {
       return;
     }
 
-    this.registrationService.registerUser(this.registerForm.value).subscribe();
-
-    alert('You have signed up successfully!');
-
-    this.router.navigate(['/login']);
+    this.registrationService.registerUser(this.registerForm.value).subscribe(
+      _ => 
+      {
+        alert('You have signed up successfully!');      
+        this.router.navigate(['/login']);
+      },
+      (error => this.usernameExists = error.error)
+    );
   }
 }
