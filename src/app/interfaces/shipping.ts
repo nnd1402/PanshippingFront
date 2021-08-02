@@ -3,8 +3,8 @@ import { IUser } from "./user";
 
 export interface IShipping {
     id: string,
-    start: string,
-    end: string,
+    start: Date,
+    end: Date,
     user: IUser,
     product: IProduct
 }

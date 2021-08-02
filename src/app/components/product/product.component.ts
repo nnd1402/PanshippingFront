@@ -13,7 +13,9 @@ export class ProductComponent implements OnInit {
   products?: IProduct[];
   // za template - ako ima proizvoda prikazi ih a ako nema ne
   haveProducts: boolean = false;
-  showChecked: boolean = false;
+  showMyProducts: boolean = false;
+  showMyShippment: boolean = false;
+  userId!: string;
 
   constructor(
     private productService: ProductService,
@@ -22,17 +24,33 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadAllProducts();
+    // izvuci id ulogovanog usera iz local storage-a
+    this.userId = JSON.parse(this.loginService.getToken()).id;
   }
 
   // ako je Show My Products cekiran, nakon dodavanja proizvoda prikazi samo proizvode usera
   // ako nije cekiran a novi proizvod je dodat, nakon dodavanja ucitaj sve postojece proizvode sa dodatim 
   loadAddedProduct() {
-    if(this.showChecked){
+    if(this.showMyProducts){
       this.loadUserProducts();
     }
     else {
       this.loadAllProducts();
     }
+  }
+
+  // izvrsi get zahtev iz product servisa za dobavljanje liste
+  // proizvoda koje je ulogovani korisnik porucio
+  loadMyShippment() {
+    console.log(this.userId)
+    this.productService.getBoughtProducts(this.userId).subscribe(
+      (data) => {
+        this.products = data;
+      },
+      (error => {
+        console.log(error.error);
+      })
+    );
   }
 
   loadAllProducts() {
@@ -70,14 +88,25 @@ export class ProductComponent implements OnInit {
 
   // ako check box kliknut prikazi samo product-e od ulogovanog usera
   // u suprotnom prikazi sve product-e
-  checkClicked(): void {
-    if(this.showChecked) {
-      this.showChecked = false;
+  myProductsClicked(): void {
+    if(this.showMyProducts) {
+      this.showMyProducts = false;
       this.loadAllProducts();
     }
     else {
-      this.showChecked = true;
+      this.showMyProducts = true;
       this.loadUserProducts();
+    }
+  }
+
+  myShippmentClicked() {
+    if(this.showMyShippment) {
+      this.showMyShippment = false;
+      this.loadAllProducts();
+    }
+    else {
+      this.showMyShippment = true;
+      this.loadMyShippment();
     }
   }
 }

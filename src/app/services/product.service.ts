@@ -33,7 +33,7 @@ export class ProductService {
 
   getProductsByUserId(): Observable<any> {
     this.userId = JSON.parse(this.loginService.getToken()).id;
-    return this.httpClient.get<any>(`/api/product/getProductsByUserId/${this.userId}`);
+    return this.httpClient.get<any>(`/api/product/getProductsByUser/${this.userId}`);
   }
 
   editProduct(product: IProduct): Observable<IProduct> {
@@ -42,5 +42,9 @@ export class ProductService {
 
   deleteProduct(productId: string): Observable<any> {
     return this.httpClient.delete<any>(`/api/product/${productId}`, this.httpHeader);
+  }
+
+  getBoughtProducts(userId: string) {
+    return this.httpClient.get<any>(`/api/product/getBoughtProductsByUser/${userId}`);
   }
 }

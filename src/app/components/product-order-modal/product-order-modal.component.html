@@ -26,13 +26,13 @@
   </p>
   <p>
     Phone: <span>{{ user.phone }}</span> 
-  </p>
+  <!-- </p>
 
   <h3>Order Date</h3>
-  <p>{{ order.start }}</p>
+  <p>{{ order.start | date }}</p>
 
   <h3>Delivery Date</h3>
-  <p>{{ order.end }}</p>
+  <p>{{ order.end | date }}</p> -->
 </mat-dialog-content>
 <mat-dialog-actions>
     <button mat-raised-button color="primary" (click)="onConfirmOrder()">Confirm</button>

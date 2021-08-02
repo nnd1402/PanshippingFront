@@ -6,10 +6,10 @@
             <app-product-add (addClosed)="loadAddedProduct()"></app-product-add>
         </span>
         <span class="check-box">
-            <mat-checkbox (click)="checkClicked()">Show My Products</mat-checkbox>
+            <mat-checkbox (click)="myProductsClicked()">Show My Products</mat-checkbox>
         </span>
         <span class="check-box">            
-            <mat-checkbox>Show My Shippment</mat-checkbox>
+            <mat-checkbox (click)="myShippmentClicked()">Show My Shippment</mat-checkbox>
         </span>
     </div>
     <app-product-list *ngIf="haveProducts" 
@@ -17,7 +17,8 @@
     [isLoggedIn]="isLoggedIn()" 
     (editClosed)="loadUserProducts()" 
     (deleteClosed)="loadUserProducts()"
-    [showMyProducts]="showChecked"></app-product-list>
+    [showMyProducts]="showMyProducts"
+    ></app-product-list>
     <div *ngIf="!haveProducts" class="product-message">
         <h1>Product list is empty !</h1>
     </div>

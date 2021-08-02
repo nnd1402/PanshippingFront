@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { IShipping } from '../interfaces/shipping';
+import { IShippingRequest } from '../interfaces/shipping-request';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class ShippingService {
     responseType: 'text' as 'json'
   }
 
-  sendOrder(order: IShipping): Observable<any> {
+  sendOrder(order: IShippingRequest): Observable<any> {
     return this.httpClient.post<any>('/api/shipping/addShipment', JSON.stringify(order), this.httpHeader);
   }
 }

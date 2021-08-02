@@ -4,7 +4,7 @@ import { IProduct } from 'src/app/interfaces/product';
 import { IUser } from '../../interfaces/user';
 import { ShippingService } from 'src/app/services/shipping.service';
 import { UserService } from 'src/app/services/user.service';
-import { IShipping } from 'src/app/interfaces/shipping';
+import { IShippingRequest } from 'src/app/interfaces/shipping-request';
 
 @Component({
   selector: 'app-product-order-modal',
@@ -16,13 +16,7 @@ export class ProductOrderModalComponent implements OnInit {
   user: IUser = <IUser>{};
   product!: IProduct;
   date = new Date();
-  order: IShipping = { 
-    id: '',
-    start: new Date(this.date).toISOString(),
-    end: new Date(this.date.setDate(this.date.getDate() + 10)).toISOString(),
-    user: <IUser>{},
-    product: <IProduct>{}
-  };
+  order: IShippingRequest = <IShippingRequest>{};
 
   constructor(
     public dialogRef: MatDialogRef<ProductOrderModalComponent>,
@@ -40,10 +34,12 @@ export class ProductOrderModalComponent implements OnInit {
   }
   
   onConfirmOrder() {
-    this.order.product = this.product;
-    this.order.user = this.user;
-    console.log(this.order);
-    this.shippingService.sendOrder(this.order).subscribe((data) => console.log(data));
+    this.order.productId = this.product.id;
+    this.order.userId = this.user.id;
+    console.log(`Product Id: ${this.product.id}, \n User id: ${this.user.id}`)
+    this.shippingService.sendOrder(this.order).subscribe((data) => alert(data));
+    
+    this.closeDialog();
   }
 
   // zatvori modal

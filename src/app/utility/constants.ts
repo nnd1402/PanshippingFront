@@ -11,3 +11,5 @@ export const PRICE_REGEXP: string = '^\\d*(\\.\\d+)?$';
 export const LOGIN_URL: string = '/login';
 export const REGISTRATION_URL: string = '/registration';
 export const USER_URL: string = '/user';
+// ERROR MESSAGES
+export const USER_EXISTS = 'Username already exists.';

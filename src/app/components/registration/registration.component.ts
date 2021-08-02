@@ -3,7 +3,7 @@ import { AbstractControl, FormGroup, FormBuilder, Validators } from '@angular/fo
 import { Validation } from './password-validator';
 import { RegistrationService } from '../../services/registration.service';
 import { Router } from '@angular/router'
-import { EMPTY_STRING, NUMBER_REGEXP } from 'src/app/utility/constants';
+import { EMPTY_STRING, NUMBER_REGEXP, USER_EXISTS } from 'src/app/utility/constants';
 
 @Component({
   selector: 'app-registration',
@@ -60,7 +60,10 @@ export class RegistrationComponent implements OnInit {
         alert('You have signed up successfully!');      
         this.router.navigate(['/login']);
       },
-      (error => this.usernameExists = error.error)
+      (error => {
+        if(USER_EXISTS === error.error)
+          this.usernameExists = USER_EXISTS;
+      })
     );
   }
 }
