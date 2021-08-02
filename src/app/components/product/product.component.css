@@ -18,6 +18,26 @@
     border-radius: 5px;
 }
 
+.product-message {
+    width: 100%;
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.product-message h1 {
+    font-size: 3rem;
+    z-index: 1000;
+    text-align: center;
+    line-height: 1;    
+    color: #fff;    
+    background-color: #F55F44;
+    padding: 20px;
+    border-radius: 5px;
+}
+
 @media screen and (max-width: 768px) {
     .ship-img {
         display: none;

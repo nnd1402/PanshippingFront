@@ -1,0 +1,76 @@
+<h1 mat-dialog-title>Edit Profile</h1>
+<div mat-dialog-content>
+  <form [formGroup]="editUserForm" (ngSubmit)="onSubmit()">
+    <!-- first name -->
+    <div>
+      <mat-form-field appearance="standard">
+          <mat-label for="firstName">First Name</mat-label>                    
+          <input formControlName="firstName" matInput placeholder="firstName" autocomplete="off">                        
+      </mat-form-field>
+      <div *ngIf="form.firstName.errors">
+          <!-- ako je polje prazno i kliknuto ili je polje prazno a forma submitovana => prikazi poruku da polje nije validno -->
+          <div *ngIf="form.firstName.errors.required && form.firstName.touched || form.firstName.errors.required && submitted" class="input-error-message name-error">First Name is required</div>
+      </div>
+    </div>
+    <!-- last name -->
+    <div>
+      <mat-form-field appearance="standard">
+          <mat-label for="lastName">Last Name</mat-label>                    
+          <input formControlName="lastName" matInput placeholder="lastName" autocomplete="off">                        
+      </mat-form-field>
+      <div *ngIf="form.lastName.errors">
+          <!-- ako je polje prazno i kliknuto ili je polje prazno a forma submitovana => prikazi poruku da polje nije validno -->
+          <div *ngIf="form.lastName.errors.required && form.lastName.touched || form.lastName.errors.required && submitted" class="input-error-message name-error">Last Name is required</div>
+      </div>
+    </div>
+    <!-- email -->
+    <div>
+      <mat-form-field appearance="standard">
+          <mat-label for="email">Email</mat-label>                    
+          <input formControlName="email" matInput placeholder="email" autocomplete="off">                        
+      </mat-form-field>
+      <div *ngIf="form.email.errors">
+          <div *ngIf="form.email.errors.required && form.email.touched || form.email.errors.required && submitted" class="input-error-message">Email is required</div>
+          <div *ngIf="form.email.errors.email" class="input-error-message">Email is not in valid format</div>
+          <div *ngIf="form.email.errors.minlength" class="input-error-message">Email must have at least 6 characters</div>
+      </div>
+    </div>
+    <!-- address -->
+    <div>
+      <mat-form-field appearance="standard">
+          <mat-label for="address">Address</mat-label>                    
+          <input formControlName="address" matInput placeholder="address" autocomplete="off">                        
+      </mat-form-field>
+      <div *ngIf="form.address.errors">
+          <!-- ako je polje prazno i kliknuto ili je polje prazno a forma submitovana => prikazi poruku da polje nije validno -->
+          <div *ngIf="form.address.errors.required && form.address.touched || form.address.errors.required && submitted" class="input-error-message name-error">Address is required</div>
+      </div>
+    </div>
+    <!-- country -->
+    <div>
+      <mat-form-field appearance="standard">
+          <mat-label for="country">Country</mat-label>                    
+          <input formControlName="country" matInput placeholder="country" autocomplete="off">                        
+      </mat-form-field>
+      <div *ngIf="form.country.errors">
+          <!-- ako je polje prazno i kliknuto ili je polje prazno a forma submitovana => prikazi poruku da polje nije validno -->
+          <div *ngIf="form.country.errors.required && form.country.touched || form.country.errors.required && submitted" class="input-error-message name-error">Country is required</div>
+      </div>
+    </div>
+    <!-- phone -->
+    <div>
+      <mat-form-field appearance="standard">
+          <mat-label for="phone">Phone</mat-label>                    
+          <input formControlName="phone" matInput placeholder="phone" autocomplete="off">                        
+      </mat-form-field>
+      <div *ngIf="form.phone.errors">
+        <div *ngIf="form.phone.errors.required && form.phone.touched || form.phone.errors.required && submitted" class="input-error-message">Phone Number is required</div>
+        <div *ngIf="form.phone.errors.pattern" class="input-error-message">Phone Number must contain only numbers</div>
+      </div>
+    </div>    
+    <div class="btn-box">
+      <button type="submit" mat-raised-button color="accent">Save</button>
+      <button type="button" mat-button (click)="closeDialog()">Cancel</button>
+    </div>
+  </form>
+</div>

@@ -4,15 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './services/auth.guard';
-import { AppComponent } from './app.component';
 import { ProductComponent } from './components/product/product.component';
+import { UserComponent } from './components/user/user.component';
 
 const routes: Routes = [
   { path: 'registration', component: RegistrationComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
-  // posto jos nemam UserComponent stavio sam AppComponent,
-  // ako neko unese /user u url redirektovace ga na login stranicu
-  { path: 'user', component: AppComponent, canActivate: [AuthGuard] },
+  { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
   { path: 'product', component: ProductComponent }
 ];
 

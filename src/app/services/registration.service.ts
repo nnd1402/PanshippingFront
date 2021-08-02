@@ -13,7 +13,8 @@ export class RegistrationService {
   httpHeader = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
-    })
+    }),
+    responseType: 'text' as 'json'
   }
 
   registerUser(user: IUser): Observable<any> {

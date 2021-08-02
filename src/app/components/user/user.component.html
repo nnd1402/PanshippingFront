@@ -1,0 +1,31 @@
+<section class="user-section">
+    <img src="../../../assets/images/shared/ship.svg" class="ship-img">
+    <mat-card class="user-card" *ngIf="user">
+        <div class="user-img-box">
+            <img src="../../../assets/images/shared/user.png" alt="User Profile Picture">
+        </div>
+        <mat-card-content>
+          <p>
+            First Name: <span>{{ user.firstName }}</span> 
+          </p>
+          <p>
+            Last Name: <span>{{ user.lastName }}</span>
+          </p>
+          <p>
+            Email: <span>{{ user.email }}</span>
+          </p>
+          <p>
+            Address: <span>{{ user.address }}</span> 
+          </p>
+          <p>
+            Country: <span>{{ user.country }}</span>
+          </p>
+          <p>
+            Phone: <span>{{ user.phone }}</span>
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="accent" (click)="openEditDialog()">Edit</button>
+        </mat-card-actions>
+      </mat-card>
+</section>

@@ -1,0 +1,30 @@
+mat-form-field {
+    width: 100%;
+}
+
+.input-error-message {
+    color: #f00;
+}
+
+.btn-box {
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.input-error-message.name-error {
+    margin-bottom: 1.3rem;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {    
+    background: #fff;
+}
+
+::-webkit-scrollbar-thumb {    
+    background: #673AB7;  
+    border-radius: 10px;
+}
