@@ -6,10 +6,12 @@
             <app-product-add (addClosed)="loadAddedProduct()"></app-product-add>
         </span>
         <span class="check-box">
-            <mat-checkbox (click)="myProductsClicked()">Show My Products</mat-checkbox>
+            <!-- #myProducts - selektuj mat-checkbox element i prosledi ga click event metodi myShippmentClicked od Show My Shippment check box-a-->
+            <mat-checkbox #myProducts (click)="myProductsClicked(myShippment)">Show My Products</mat-checkbox>
         </span>
-        <span class="check-box">            
-            <mat-checkbox (click)="myShippmentClicked()">Show My Shippment</mat-checkbox>
+        <span class="check-box">    
+            <!-- #myShippment - selektuj mat-checkbox element i prosledi ga click event metodi myProductsClicked od Show My Products check box-a-->
+            <mat-checkbox #myShippment (click)="myShippmentClicked(myProducts)">Show My Shippment</mat-checkbox>
         </span>
     </div>
     <app-product-list *ngIf="haveProducts" 
@@ -20,6 +22,6 @@
     [showMyProducts]="showMyProducts"
     ></app-product-list>
     <div *ngIf="!haveProducts" class="product-message">
-        <h1>Product list is empty !</h1>
+        <h1>List is empty !</h1>
     </div>
 </section>
