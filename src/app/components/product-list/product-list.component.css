@@ -62,8 +62,6 @@ img {
 
 .in-transit {
   color: #fc8f00;
-  border: 5px solid #fc8f00;
-  border-radius: 5px;
 }
 
 .in-transit-border {
@@ -73,8 +71,6 @@ img {
 
 .delivered {
   color: #35df13;
-  border: 5px solid #35df13;
-  border-radius: 5px;
 }
 
 .delivered-border {
