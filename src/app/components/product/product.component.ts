@@ -11,7 +11,7 @@ import { NO_BOUGHT_PRODUCTS, NO_USER_PRODUCTS, NO_PRODUCTS } from 'src/app/utili
 })
 export class ProductComponent implements OnInit {
 
-  products?: IProduct[];
+  products?: any;
   // za template - ako ima proizvoda prikazi ih a ako nema ne, odnosno prikazi poruku da list prazna
   haveProducts: boolean = false;
   // belezi stanje da li je Show My Products check box cekiran

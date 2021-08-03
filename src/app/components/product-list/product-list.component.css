@@ -1,4 +1,4 @@
-.products-box {
+.products-box, .orders-box {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
@@ -18,7 +18,7 @@ h1 {
   font-size: 2rem;
 }
 
-.quantity-box {
+.quantity-box, .price-box, .status-box {
   padding: 1rem 0;
 }
 
@@ -42,13 +42,13 @@ img {
 }
 
 @media (min-width: 600px) {
-  .products-box {
+  .products-box, .orders-box {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (min-width: 900px) {
-  .products-box {
+  .products-box, .orders-box {
     grid-template-columns: repeat(3, 1fr);
   }
 }

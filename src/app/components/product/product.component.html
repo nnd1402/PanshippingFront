@@ -20,6 +20,7 @@
     (editClosed)="loadUserProducts()" 
     (deleteClosed)="loadUserProducts()"
     [showMyProducts]="showMyProducts"
+    [showMyOrders]="showMyShippment"
     ></app-product-list>
     <div *ngIf="!haveProducts" class="product-message">
         <h1>List is empty !</h1>

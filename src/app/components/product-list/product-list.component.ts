@@ -12,9 +12,10 @@ import { ProductOrderModalComponent } from '../product-order-modal/product-order
 })
 export class ProductListComponent implements OnInit {
 
-  @Input() productList?: IProduct[];
+  @Input() productList?: any;
   @Input() isLoggedIn?: boolean;
   @Input() showMyProducts: boolean = false;
+  @Input() showMyOrders: boolean = false;
   @Output() editClosed = new EventEmitter();
   @Output() deleteClosed = new EventEmitter();
 

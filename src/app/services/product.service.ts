@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { IProduct } from '../interfaces/product';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { LoginService } from './login.service';
 
 @Injectable({
@@ -45,6 +46,27 @@ export class ProductService {
   }
 
   getBoughtProducts(userId: string) {
-    return this.httpClient.get<any>(`/api/product/getBoughtProductsByUser/${userId}`);
+    return this.httpClient.get<any>(`/api/product/getBoughtProductsByUser/${userId}`)
+    .pipe(
+      map(products => {
+        for(let p of products) {
+          for(let s of p.shipping) {
+            const startDate = new Date(s.start);
+            const endDate = new Date(s.end);
+            const currentDate = new Date();
+            if(startDate > currentDate) {
+              p.status = 'priprema';
+            }
+            else if(endDate > currentDate) {
+              p.status = 'isporuka';
+            }
+            else {
+              p.status = 'isporucen';
+            }
+          }
+        }
+        return products;
+      })
+    );
   }
 }
