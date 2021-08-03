@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { LoginService } from './login.service';
+import { IN_PROGRESS, IN_TRANSIT, DELIVERED } from '../utility/constants';
 
 @Injectable({
   providedIn: 'root'
@@ -49,19 +50,26 @@ export class ProductService {
     return this.httpClient.get<any>(`/api/product/getBoughtProductsByUser/${userId}`)
     .pipe(
       map(products => {
+        // podesavanje poruka za status posiljke koja je narucena
         for(let p of products) {
           for(let s of p.shipping) {
             const startDate = new Date(s.start);
             const endDate = new Date(s.end);
             const currentDate = new Date();
+            p.isInProgress = false;
+            p.isInTransit = false;
+            p.isDelivered = false;
             if(startDate > currentDate) {
-              p.status = 'priprema';
+              p.status = IN_PROGRESS;
+              p.isInProgress = true;
             }
             else if(endDate > currentDate) {
-              p.status = 'isporuka';
+              p.status = IN_TRANSIT;
+              p.isInTransit = true;
             }
             else {
-              p.status = 'isporucen';
+              p.status = DELIVERED;
+              p.isDelivered = true;
             }
           }
         }

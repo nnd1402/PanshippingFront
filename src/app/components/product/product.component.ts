@@ -32,15 +32,21 @@ export class ProductComponent implements OnInit {
     // izvuci id ulogovanog usera iz local storage-a
     this.userId = JSON.parse(this.loginService.getToken()).id;
   }
-
-  // ako je Show My Products cekiran a korisnik doda novi proizvoda prikazi samo proizvode usera
-  // ako nije cekiran a novi proizvod je dodat, nakon dodavanja ucitaj sve postojece proizvode sa dodatim 
+ 
+  // nakon sto se modal za Add Product zatvori poziva se ova metoda preko event emitter-a
+  // bez obzira da li je kliknuto add ili cancel
   loadAddedProduct() {
-    if(this.showMyProducts){
+    // ako je Show My Products cekiran a korisnik doda novi proizvoda prikazi samo proizvode usera
+    if(this.showMyProducts) {
       this.loadUserProducts();
     }
+    // ako je Show My Shippment cekiran a korisnik doda novi proizvod ucitaj My Shippment proizvode
+    else if(this.showMyShippment) {
+      this.loadMyShippment();
+    }
+    // ako nije cekiran Show My Products ni Show My Shippment a novi proizvod je dodat, nakon dodavanja ucitaj sve postojece proizvode sa dodatim
     else {
-      this.loadAllProducts();
+      this.loadUserProducts();
     }
   }
 
