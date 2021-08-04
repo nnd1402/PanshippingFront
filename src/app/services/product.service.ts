@@ -38,6 +38,11 @@ export class ProductService {
     return this.httpClient.get<any>(`/api/product/getProductsByUser/${this.userId}`);
   }
 
+  getAvailableToBuy(): Observable<any> {
+    this.userId = JSON.parse(this.loginService.getToken()).id;
+    return this.httpClient.get<any>(`/api/product/getAvailableToBuy/${this.userId}`);
+  }
+
   editProduct(product: IProduct): Observable<IProduct> {
     return this.httpClient.put<IProduct>(`/api/product/${product.id}`, JSON.stringify(product), this.httpHeader);
   }

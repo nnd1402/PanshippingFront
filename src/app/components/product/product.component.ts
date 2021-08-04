@@ -27,10 +27,27 @@ export class ProductComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // pri instaciranju komponente ucitaj sve proizvode koji postoje
-    this.loadAllProducts();
+    // posle instanciranja komponente ako je korisnik ulogovan ucitaj
+    // sve proizvode koji mogu da se kupe a ne pripadaju ulogovanom korisniku
+    if(this.loginService.isLoggedIn) {
+      this.loadAvailableToBuyProducts();
+    }
+    // u suprotnom posto korisnik nije ulogovan ucitaj sve proizvode koji postoje
+    else {
+      this.loadAllProducts();
+    }
     // izvuci id ulogovanog usera iz local storage-a
     this.userId = JSON.parse(this.loginService.getToken()).id;
+  }
+
+  // dobavi sve proizvode koji ne pripadaju ulogovanom korisniku a mogu da se kupe
+  loadAvailableToBuyProducts() {
+    this.productService.getAvailableToBuy().subscribe(
+      (data => {
+        this.products = data;        
+        this.haveProducts = true;
+      })
+    )
   }
  
   // nakon sto se modal za Add Product zatvori poziva se ova metoda preko event emitter-a
@@ -44,9 +61,10 @@ export class ProductComponent implements OnInit {
     else if(this.showMyShippment) {
       this.loadMyShippment();
     }
-    // ako nije cekiran Show My Products ni Show My Shippment a novi proizvod je dodat, nakon dodavanja ucitaj sve postojece proizvode sa dodatim
+    // ako nije cekiran Show My Products ni Show My Shippment a novi proizvod je dodat, 
+    // nakon dodavanja ucitaj sve postojece proizvode koji ne pripadaju ulogovanom korisniku i koji mogu da se kupe
     else {
-      this.loadUserProducts();
+      this.loadAvailableToBuyProducts();
     }
   }
 
@@ -118,10 +136,11 @@ export class ProductComponent implements OnInit {
     this.showMyShippment = false;
     // ako je showMyProducts true znaci da je Show My Products cekiran
     // i da je korisnik kliknuo check box da ga odcekira
-    // posto je odcekiran ucitaj sve proizvode koji postoje
+    // posto je odcekiran ucitaj sve proizvode koji ne pripadaju ulogovanom korisniku
+    // a mogu da se kupe
     if(this.showMyProducts) {
       this.showMyProducts = false;
-      this.loadAllProducts();
+      this.loadAvailableToBuyProducts();
     }
     // ako je showMyProducts false znaci da Show My Products check box nije cekiran, 
     // a korisnik je kliknuo da ga cekira 
@@ -143,10 +162,11 @@ export class ProductComponent implements OnInit {
     this.showMyProducts = false;
     // ako je showMyShippment true znaci da je Show My Shippment cekiran
     // i da je korisnik kliknuo check box da ga odcekira
-    // posto je odcekiran ucitaj sve proizvode koji postoje
+    // posto je odcekiran ucitaj sve proizvode koji ne pripadaju ulogovanom korisniku
+    // a mogu da se kupe
     if(this.showMyShippment) {
       this.showMyShippment = false;
-      this.loadAllProducts();
+      this.loadAvailableToBuyProducts();
     }
     // ako je showMyProducts false znaci da Show My Shippment check box nije cekiran, 
     // a korisnik je kliknuo da ga cekira 
