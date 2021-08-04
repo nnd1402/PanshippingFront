@@ -46,6 +46,10 @@ export class ProductComponent implements OnInit {
       (data => {
         this.products = data;        
         this.haveProducts = true;
+      }),
+      (error => {
+        this.haveProducts = false;
+        console.log(error.error);
       })
     )
   }
