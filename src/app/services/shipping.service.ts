@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { IUser } from '../interfaces/user';
+import { IShippingRequest } from '../interfaces/shipping-request';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RegistrationService {
+export class ShippingService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(
+    private httpClient: HttpClient
+  ) { }
 
   httpHeader = {
     headers: new HttpHeaders({
@@ -17,7 +19,7 @@ export class RegistrationService {
     responseType: 'text' as 'json'
   }
 
-  registerUser(user: IUser): Observable<any> {
-    return this.httpClient.post<IUser>('/api/user/addUser', JSON.stringify(user), this.httpHeader);
+  sendOrder(order: IShippingRequest): Observable<any> {
+    return this.httpClient.post<any>('/api/shipping/addShipment', JSON.stringify(order), this.httpHeader);
   }
 }

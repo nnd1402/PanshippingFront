@@ -1,5 +1,6 @@
 <h1>Products</h1>
-<div class="products-box">
+<!-- ako je showMyOrders true ne prikazuj karticu za proizvod -->
+<div *ngIf="!showMyOrders"  class="products-box">
     <mat-card class="product-card" *ngFor="let product of productList">
         <mat-card-header>
           <mat-card-title>{{ product.name }}</mat-card-title>
@@ -17,8 +18,39 @@
         <hr>
         <mat-card-actions>
           <!-- prosledi proizvod u funkciju za otvaranje edit modala -->
-          <button *ngIf="isLoggedIn" mat-raised-button color="accent" (click)="openEditDialog(product)">Edit</button>
-          <button *ngIf="isLoggedIn" mat-button color="warn" (click)="openDeleteDialog(product.id)">Delete</button>
+          <button *ngIf="isLoggedIn && showMyProducts" mat-raised-button color="accent" (click)="openEditDialog(product)">Edit</button>
+          <button *ngIf="isLoggedIn && showMyProducts" mat-button color="warn" (click)="openDeleteDialog(product.id)">Delete</button>
+          <button *ngIf="isLoggedIn && !showMyProducts" mat-raised-button color="primary" (click)="openOrderDialog(product)">Order</button>
         </mat-card-actions>
       </mat-card>
+</div>
+
+<!-- ako je showMyOrders true prikazi karticu za order -->
+<div *ngIf="showMyOrders" class="orders-box">
+  <mat-card 
+  class="order-card" 
+  [class.in-progress-border]="product.isInProgress"
+  [class.in-transit-border]="product.isInTransit"
+  [class.delivered-border]="product.isDelivered"
+  *ngFor="let product of productList">
+    <mat-card-header>
+      <mat-card-title>{{ product.name }}</mat-card-title>
+    </mat-card-header>
+    <!-- ako produkt ima sliku prikazi je u suprotnom ne -->
+    <img mat-card-image *ngIf="product.image" src="{{'data:image/jpeg;base64,' + product.image}}" alt="Product Image">
+    <mat-card-content>
+      <p>
+        Description: {{ product.description }}
+      </p>
+      <hr>
+      <div class="quantity-box">Quantity: {{ product.quantity }}</div>
+      <div class="price-box">Price: {{ product.price | currency}}</div>
+      <div 
+      class="status-box">Status: <span  
+        [class.in-progress]="product.isInProgress"
+        [class.in-transit]="product.isInTransit"
+        [class.delivered]="product.isDelivered">{{ product.status }}</span>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </div>

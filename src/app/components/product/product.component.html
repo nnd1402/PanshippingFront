@@ -2,10 +2,28 @@
     <img src="../../../assets/images/shared/ship.svg" class="ship-img">
     <!-- ako korisnik nije ulogovan nemoj prikazati dugme -->
     <div class="product-btn-container" *ngIf="isLoggedIn()">
-        <app-product-add (addClosed)="loadProducts()"></app-product-add>
+        <span>
+            <app-product-add (addClosed)="loadAddedProduct()"></app-product-add>
+        </span>
+        <span class="check-box">
+            <!-- #myProducts - selektuj mat-checkbox element i prosledi ga click event metodi myShippmentClicked od Show My Shippment check box-a-->
+            <mat-checkbox #myProducts (click)="myProductsClicked(myShippment)">Show My Products</mat-checkbox>
+        </span>
+        <span class="check-box">    
+            <!-- #myShippment - selektuj mat-checkbox element i prosledi ga click event metodi myProductsClicked od Show My Products check box-a-->
+            <mat-checkbox #myShippment (click)="myShippmentClicked(myProducts)">Show My Shippment</mat-checkbox>
+        </span>
     </div>
-    <app-product-list *ngIf="haveProducts" [productList]="products" [isLoggedIn]="isLoggedIn()" (editClosed)="loadProducts()" (deleteClosed)="loadProducts()"></app-product-list>
+    <app-product-list *ngIf="haveProducts" 
+    [productList]="products" 
+    [isLoggedIn]="isLoggedIn()" 
+    (editClosed)="loadUserProducts()" 
+    (deleteClosed)="loadUserProducts()"
+    (orderClosed)="loadAvailableToBuyProducts()"
+    [showMyProducts]="showMyProducts"
+    [showMyOrders]="showMyShippment"
+    ></app-product-list>
     <div *ngIf="!haveProducts" class="product-message">
-        <h1>Product list is empty !</h1>
+        <h1>List is empty !</h1>
     </div>
 </section>

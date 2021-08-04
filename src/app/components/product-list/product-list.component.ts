@@ -3,6 +3,7 @@ import { IProduct } from 'src/app/interfaces/product';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductEditModalComponent } from '../product-edit-modal/product-edit-modal.component';
 import { ProductDeleteModalComponent } from '../product-delete-modal/product-delete-modal.component';
+import { ProductOrderModalComponent } from '../product-order-modal/product-order-modal.component';
 
 @Component({
   selector: 'app-product-list',
@@ -11,10 +12,13 @@ import { ProductDeleteModalComponent } from '../product-delete-modal/product-del
 })
 export class ProductListComponent implements OnInit {
 
-  @Input() productList?: IProduct[];
+  @Input() productList?: any;
   @Input() isLoggedIn?: boolean;
+  @Input() showMyProducts: boolean = false;
+  @Input() showMyOrders: boolean = false;
   @Output() editClosed = new EventEmitter();
   @Output() deleteClosed = new EventEmitter();
+  @Output() orderClosed = new EventEmitter();
 
 
   constructor(public dialog: MatDialog) { }
@@ -42,6 +46,16 @@ export class ProductListComponent implements OnInit {
       data: productId
     }).afterClosed().subscribe(() => {
       this.editClosed.emit();
+    });
+  }
+
+  // nakon zatvaranja modala za narucivanje proizvoda ucitaj opet sve proizvode koji mogu da se kupe
+  openOrderDialog(product: IProduct) {
+    this.dialog.open(ProductOrderModalComponent, {
+      width: '500px',
+      data: product
+    }).afterClosed().subscribe(() => {
+      this.orderClosed.emit();
     });
   }
 }

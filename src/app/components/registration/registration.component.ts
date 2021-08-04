@@ -3,7 +3,7 @@ import { AbstractControl, FormGroup, FormBuilder, Validators } from '@angular/fo
 import { Validation } from './password-validator';
 import { RegistrationService } from '../../services/registration.service';
 import { Router } from '@angular/router'
-import { EMPTY_STRING, NUMBER_REGEXP } from 'src/app/utility/constants';
+import { EMPTY_STRING, NUMBER_REGEXP, USER_EXISTS } from 'src/app/utility/constants';
 
 @Component({
   selector: 'app-registration',
@@ -15,6 +15,7 @@ export class RegistrationComponent implements OnInit {
 
   registerForm!: FormGroup;
   submitted = false;
+  usernameExists: string = ''; 
 
   constructor(
     private formBuilder: FormBuilder,
@@ -53,10 +54,16 @@ export class RegistrationComponent implements OnInit {
       return;
     }
 
-    this.registrationService.registerUser(this.registerForm.value).subscribe();
-
-    alert('You have signed up successfully!');
-
-    this.router.navigate(['/login']);
+    this.registrationService.registerUser(this.registerForm.value).subscribe(
+      _ => 
+      {
+        alert('You have signed up successfully!');      
+        this.router.navigate(['/login']);
+      },
+      (error => {
+        if(USER_EXISTS === error.error)
+          this.usernameExists = USER_EXISTS;
+      })
+    );
   }
 }
