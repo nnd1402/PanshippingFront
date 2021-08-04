@@ -18,6 +18,7 @@ export class ProductListComponent implements OnInit {
   @Input() showMyOrders: boolean = false;
   @Output() editClosed = new EventEmitter();
   @Output() deleteClosed = new EventEmitter();
+  @Output() orderClosed = new EventEmitter();
 
 
   constructor(public dialog: MatDialog) { }
@@ -48,10 +49,13 @@ export class ProductListComponent implements OnInit {
     });
   }
 
+  // nakon zatvaranja modala za narucivanje proizvoda ucitaj opet sve proizvode koji mogu da se kupe
   openOrderDialog(product: IProduct) {
     this.dialog.open(ProductOrderModalComponent, {
       width: '500px',
       data: product
+    }).afterClosed().subscribe(() => {
+      this.orderClosed.emit();
     });
   }
 }
