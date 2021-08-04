@@ -44,40 +44,6 @@ img {
   object-fit: cover;
 }
 
-/* Shipping status */
-
-.status-box > span {
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-.in-progress {
-  color: #826daa;
-}
-
-.in-progress-border {
-  border: 5px solid #826daa;
-  border-radius: 5px;
-}
-
-.in-transit {
-  color: #fc8f00;
-}
-
-.in-transit-border {
-  border: 5px solid #fc8f00;
-  border-radius: 5px;
-}
-
-.delivered {
-  color: #35df13;
-}
-
-.delivered-border {
-  border: 3px solid #35df13;
-  border-radius: 5px;
-}
-
 @media (min-width: 600px) {
   .products-box,
   .orders-box {
