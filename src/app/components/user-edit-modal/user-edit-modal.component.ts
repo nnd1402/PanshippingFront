@@ -50,10 +50,7 @@ export class UserEditModalComponent implements OnInit {
       return;
     }
     
-    this.userService.editUser(this.editUserForm.value)
-      .subscribe((data) => {
-        console.log(data);
-      });
+    this.userService.editUser(this.editUserForm.value).subscribe();
 
     this.closeDialog();
   }

@@ -45,6 +45,7 @@ export class ProductEditModalComponent implements OnInit {
       price: [this.product.price, [Validators.required, Validators.pattern(PRICE_REGEXP)]],
       quantity: [this.product.quantity, [Validators.required, Validators.pattern(NUMBER_REGEXP)]],
       description: [this.product.description, Validators.required],
+      ordered: [this.product.ordered],
       image: [this.product.image],
       user: [this.userId]
     });
@@ -61,10 +62,7 @@ export class ProductEditModalComponent implements OnInit {
       return;
     }
   
-    this.productService.editProduct(this.editProductForm.value)
-      .subscribe((data) => {
-        console.log(data);
-      });
+    this.productService.editProduct(this.editProductForm.value).subscribe();
 
     this.closeDialog();
   }

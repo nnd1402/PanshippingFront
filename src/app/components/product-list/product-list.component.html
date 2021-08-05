@@ -13,7 +13,7 @@
           </p>
           <hr>
           <div class="quantity-box">Quantity: {{ product.quantity }}</div>
-          <div class="price-box">Price: {{ product.price | currency}}</div>
+          <div class="price-box">Price: {{ product.price | currency:'EUR':true }}</div>
         </mat-card-content>
         <hr>
         <mat-card-actions>
@@ -27,7 +27,10 @@
 
 <!-- ako je showMyOrders true prikazi karticu za order -->
 <div *ngIf="showMyOrders" class="orders-box">
-  <mat-card 
+  <mat-card
+  [class.in-progress-border]="product.isInProgress"
+  [class.in-transit-border]="product.isInTransit"
+  [class.delivered-border]="product.isDelivered"
   class="order-card"
   *ngFor="let product of productList">
     <mat-card-header>
@@ -41,9 +44,12 @@
       </p>
       <hr>
       <div class="quantity-box">Quantity: {{ product.quantity }}</div>
-      <div class="price-box">Price: {{ product.price | currency}}</div>
+      <div class="price-box">Price: {{ product.price | currency:'EUR':true }}</div>
       <div 
-      class="status-box">Status: <span>{{ product.status }}</span>
+      class="status-box">Status: <span
+        [class.in-progress]="product.isInProgress"
+        [class.in-transit]="product.isInTransit"
+        [class.delivered]="product.isDelivered">{{ product.status }}</span>
       </div>
     </mat-card-content>
   </mat-card>

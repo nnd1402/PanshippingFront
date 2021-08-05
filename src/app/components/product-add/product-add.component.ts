@@ -74,9 +74,7 @@ export class ProductAddModalComponent implements OnInit {
       return;
     }
   
-    this.productService.addProduct(this.addProductForm.value).subscribe(
-      (data => console.log(data))
-    );
+    this.productService.addProduct(this.addProductForm.value).subscribe();
 
     this.closeDialog();
   }

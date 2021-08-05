@@ -56,8 +56,7 @@ export class RegistrationComponent implements OnInit {
 
     this.registrationService.registerUser(this.registerForm.value).subscribe(
       _ => 
-      {
-        alert('You have signed up successfully!');      
+      {      
         this.router.navigate(['/login']);
       },
       (error => {
