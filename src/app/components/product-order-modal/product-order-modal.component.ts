@@ -36,8 +36,7 @@ export class ProductOrderModalComponent implements OnInit {
   onConfirmOrder() {
     this.order.productId = this.product.id;
     this.order.userId = this.user.id;
-    console.log(`Product Id: ${this.product.id}, \n User id: ${this.user.id}`)
-    this.shippingService.sendOrder(this.order).subscribe((data) => alert(data));
+    this.shippingService.sendOrder(this.order).subscribe();
     
     this.closeDialog();
   }

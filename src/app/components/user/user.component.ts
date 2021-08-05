@@ -3,9 +3,6 @@ import { IUser } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UserEditModalComponent } from '../user-edit-modal/user-edit-modal.component';
-import { IProduct } from 'src/app/interfaces/product';
-import { ProductService } from 'src/app/services/product.service';
-import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-user',

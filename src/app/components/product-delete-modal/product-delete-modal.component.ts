@@ -23,10 +23,7 @@ export class ProductDeleteModalComponent implements OnInit {
   }
 
   deleteProduct() {
-    this.productService.deleteProduct(this.productId)
-      .subscribe((data) => {
-        console.log(data);
-      });
+    this.productService.deleteProduct(this.productId).subscribe();
 
     this.closeDialog();
   }

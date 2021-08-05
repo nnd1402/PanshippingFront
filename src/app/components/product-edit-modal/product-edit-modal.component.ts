@@ -61,10 +61,7 @@ export class ProductEditModalComponent implements OnInit {
       return;
     }
   
-    this.productService.editProduct(this.editProductForm.value)
-      .subscribe((data) => {
-        console.log(data);
-      });
+    this.productService.editProduct(this.editProductForm.value).subscribe();
 
     this.closeDialog();
   }

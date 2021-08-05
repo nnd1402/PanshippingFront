@@ -49,7 +49,6 @@ export class ProductComponent implements OnInit {
       }),
       (error => {
         this.haveProducts = false;
-        console.log(error.error);
       })
     )
   }
@@ -84,7 +83,6 @@ export class ProductComponent implements OnInit {
         // promeni vrednost haveProducts u false sto ce prikazati empty list poruku na stranici
         if(NO_BOUGHT_PRODUCTS === error.error)
           this.haveProducts = false;
-        console.log(error.error);
       })
     );
   }
@@ -102,7 +100,6 @@ export class ProductComponent implements OnInit {
           // promeni vrednost haveProducts u false sto ce prikazati empty list poruku na stranici
           if(NO_PRODUCTS === error.error)
             this.haveProducts = false;
-          console.log(error.error);
         } 
       );
   }
@@ -120,7 +117,6 @@ export class ProductComponent implements OnInit {
           // promeni vrednost haveProducts u false sto ce prikazati empty list poruku na stranici
           if(NO_USER_PRODUCTS === error.error)
             this.haveProducts = false;
-          console.log(error.error);
         } 
       );
   }
